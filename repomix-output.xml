@@ -394,33 +394,6 @@ export const routes: Routes = [
 </footer>
 </file>
 
-<file path="src/app/github.service.ts">
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-
-@Injectable({ providedIn: 'root' })
-export class GithubService {
-  constructor(private http: HttpClient) {}
-
-  getRepos(): Observable<any[]> {
-    return this.http.get<any[]>(
-      'https://api.github.com/users/itz-youssef/repos?sort=updated&per_page=6'
-    ).pipe(catchError(() => of([])));
-  }
-
-  getIcon(lang: string): string {
-    const icons: Record<string, string> = {
-      JavaScript: 'js', Python: 'python', Java: 'java',
-      'C++': 'cuttlefish', HTML: 'html5', CSS: 'css3-alt',
-      TypeScript: 'js-square', PHP: 'php'
-    };
-    return icons[lang] || 'code';
-  }
-}
-</file>
-
 <file path="src/app/home/home.component.css">
 /* Home component extra styles - main styles in global styles.css */
 </file>
@@ -751,6 +724,36 @@ ng build --configuration=production
 - Chatbase widget and particles.js are loaded from CDN in index.html
 </file>
 
+<file path="src/app/github.service.ts">
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, timeout } from 'rxjs/operators';
+
+@Injectable({ providedIn: 'root' })
+export class GithubService {
+  constructor(private http: HttpClient) {}
+
+  getRepos(): Observable<any[]> {
+    return this.http.get<any[]>(
+      'https://api.github.com/users/itz-youssef/repos?sort=updated&per_page=6'
+    ).pipe(
+      timeout(5000),           // ← fail fast after 5s
+      catchError(() => of([]))  // ← on 403 or timeout, return empty array
+    );
+  }
+
+  getIcon(lang: string): string {
+    const icons: Record<string, string> = {
+      JavaScript: 'js', Python: 'python', Java: 'java',
+      'C++': 'cuttlefish', HTML: 'html5', CSS: 'css3-alt',
+      TypeScript: 'js-square', PHP: 'php'
+    };
+    return icons[lang] || 'code';
+  }
+}
+</file>
+
 <file path="src/app/home/home.component.html">
 <!-- Hero Section -->
 <section class="hero">
@@ -953,13 +956,12 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class LoadingService {
-  private loadingSubject = new BehaviorSubject<boolean>(true);
+  private loadingSubject = new BehaviorSubject<boolean>(false); // ← was true
   loading$ = this.loadingSubject.asObservable();
   private fallbackTimer: any;
 
   show() {
     this.loadingSubject.next(true);
-    // Hard fallback: never stay loading more than 6 seconds
     clearTimeout(this.fallbackTimer);
     this.fallbackTimer = setTimeout(() => {
       this.loadingSubject.next(false);
@@ -2597,16 +2599,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
 }
 </file>
 
-<file path="src/app/app.component.html">
-<!-- <app-preloader [hidden]="!loading"></app-preloader> -->
-
-<div id="particles-js"></div>
-
-<app-navbar></app-navbar>
-
-<router-outlet></router-outlet>
-</file>
-
 <file path="src/app/about/about.component.ts">
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -2685,6 +2677,14 @@ export class AboutComponent implements OnInit, AfterViewInit {
 }
 </file>
 
+<file path="src/app/app.component.html">
+<app-preloader [hidden]="!loading"></app-preloader>
+
+<div id="particles-js"></div>
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+</file>
+
 <file path="src/app/app.component.ts">
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -2701,24 +2701,15 @@ import { NavbarComponent } from './navbar/navbar.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  loading = true;
+  loading = false;  // ← was true
 
   constructor(private loadingService: LoadingService) {}
 
   ngOnInit() {
-    // اربط الحالة
     this.loadingService.loading$.subscribe(state => {
       this.loading = state;
     });
-
-    // ابدأ التحميل
-    this.loadingService.show();
-
-    // اقفل الـ loading بعد ما الصفحة تجهز
-    setTimeout(() => {
-      this.loadingService.hide();
-    }, 1000);
+    // ← REMOVED the show() + setTimeout hide()
   }
 }
 </file>

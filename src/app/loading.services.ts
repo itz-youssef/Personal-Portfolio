@@ -3,13 +3,12 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class LoadingService {
-  private loadingSubject = new BehaviorSubject<boolean>(true);
+  private loadingSubject = new BehaviorSubject<boolean>(false); // ← was true
   loading$ = this.loadingSubject.asObservable();
   private fallbackTimer: any;
 
   show() {
     this.loadingSubject.next(true);
-    // Hard fallback: never stay loading more than 6 seconds
     clearTimeout(this.fallbackTimer);
     this.fallbackTimer = setTimeout(() => {
       this.loadingSubject.next(false);
