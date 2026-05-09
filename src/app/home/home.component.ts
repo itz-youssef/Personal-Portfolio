@@ -5,6 +5,7 @@ import { SheetsService } from '../sheets.service';
 import { GithubService } from '../github.service';
 import { LoadingService } from '../loading.services';
 import { forkJoin } from 'rxjs';
+import { finalize } from 'rxjs/operators'; // <--- ADDED THIS
 
 @Component({
   selector: 'app-home',
@@ -52,18 +53,28 @@ export class HomeComponent implements OnInit, AfterViewInit {
       experience: this.sheets.getExperience(),
       mainProjects: this.sheets.getMainProjects(),
       repos: this.github.getRepos()
-    }).subscribe(({ settings, featured, experience, mainProjects, repos }) => {
-      if (settings['profile_img']) this.profileImg = settings['profile_img'];
-      if (settings['hero_name']) this.heroName = settings['hero_name'];
-      if (settings['hero_desc']) this.heroDesc = settings['hero_desc'];
-      this.featured = featured;
-      this.experience = experience;
-      this.mainProjects = mainProjects;
-      
-      this.githubRepos = repos;
-      this.loadingRepos = false;
-
-      this.loadingService.hide();
+    })
+    .pipe(
+      // finalize guarantees the loader hides even if an API fails!
+      finalize(() => {
+        this.loadingService.hide();
+      })
+    )
+    .subscribe({
+      next: ({ settings, featured, experience, mainProjects, repos }) => {
+        if (settings['profile_img']) this.profileImg = settings['profile_img'];
+        if (settings['hero_name']) this.heroName = settings['hero_name'];
+        if (settings['hero_desc']) this.heroDesc = settings['hero_desc'];
+        this.featured = featured;
+        this.experience = experience;
+        this.mainProjects = mainProjects;
+        
+        this.githubRepos = repos;
+        this.loadingRepos = false;
+      },
+      error: (err) => {
+        console.error('API Error on Home Page:', err);
+      }
     });
   }
 
