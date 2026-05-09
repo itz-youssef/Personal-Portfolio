@@ -1,0 +1,2722 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: /locales/, /assets/, /pnpm-lock.yaml, /.svg, **/.png
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.editorconfig
+.gitignore
+angular.json
+package.json
+README.md
+src/app/about/about.component.css
+src/app/about/about.component.html
+src/app/about/about.component.ts
+src/app/app.component.css
+src/app/app.component.html
+src/app/app.component.ts
+src/app/app.config.ts
+src/app/app.routes.ts
+src/app/certificates/certificates.component.css
+src/app/certificates/certificates.component.html
+src/app/certificates/certificates.component.ts
+src/app/contact/contact.component.css
+src/app/contact/contact.component.html
+src/app/contact/contact.component.ts
+src/app/github.service.ts
+src/app/home/home.component.css
+src/app/home/home.component.html
+src/app/home/home.component.ts
+src/app/loading.services.ts
+src/app/navbar/navbar.component.css
+src/app/navbar/navbar.component.html
+src/app/navbar/navbar.component.ts
+src/app/preloader/preloader.component.css
+src/app/preloader/preloader.component.html
+src/app/preloader/preloader.component.ts
+src/app/sheets.service.ts
+src/app/theme.service.ts
+src/assets/.gitkeep
+src/favicon.ico
+src/index.html
+src/main.ts
+src/public/_redirects
+src/public/media/1764031045055.jpg
+src/public/media/1764031045142.jpg
+src/public/media/cairo-uni.jpg
+src/public/media/cccc.jpeg
+src/public/media/certificate.jpeg
+src/public/media/certificate2.jpeg
+src/public/media/conf_mat.jpg
+src/public/media/Confusion_matrix 2.jpeg
+src/public/media/Confusion_matrix.jpeg
+src/public/media/Coursera.png
+src/public/media/coursera2.png
+src/public/media/CU_AI_Nexus_2025_Certificate_20230519stud.fci-Cu.edu.eg_page-0001.jpg
+src/public/media/daatta.jpg
+src/public/media/datacamp.jpg
+src/public/media/datacampinc_logo.jpg
+src/public/media/dc.jpg
+src/public/media/dc2.jpg
+src/public/media/dc3.jpg
+src/public/media/ECPC.jpg
+src/public/media/favicon.png
+src/public/media/fundamentalsAI.jpg
+src/public/media/javaa.jpeg
+src/public/media/Mahara.jpg
+src/public/media/maharaa.png
+src/public/media/Maharatech.webp
+src/public/media/maharatechiti_logo.jpg
+src/public/media/Nvidia.jpg
+src/public/media/Softskills.jpeg
+src/public/media/ssss.jpeg
+src/public/media/ttt.jpeg
+src/public/media/Udemy.jpg
+src/public/media/Udemy.webp
+src/public/media/udemy22.webp
+src/public/media/udemyyy.png
+src/public/media/Youssef_CV_Final.pdf
+src/styles.css
+tsconfig.app.json
+tsconfig.json
+tsconfig.spec.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".editorconfig">
+# Editor configuration, see https://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.ts]
+quote_type = single
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+</file>
+
+<file path="package.json">
+{
+  "name": "portfolio",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.3.0",
+    "@angular/common": "^17.3.0",
+    "@angular/compiler": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "@angular/forms": "^17.3.0",
+    "@angular/platform-browser": "^17.3.0",
+    "@angular/platform-browser-dynamic": "^17.3.0",
+    "@angular/router": "^17.3.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.3.17",
+    "@angular/cli": "^17.3.17",
+    "@angular/compiler-cli": "^17.3.0",
+    "@types/jasmine": "~5.1.0",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.4.2"
+  }
+}
+</file>
+
+<file path="src/app/about/about.component.css">
+
+</file>
+
+<file path="src/app/app.component.css">
+
+</file>
+
+<file path="src/app/app.component.html">
+<app-preloader [hidden]="!loading"></app-preloader>
+<div id="particles-js"></div>
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+</file>
+
+<file path="src/app/app.config.ts">
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter, withHashLocation } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes, withHashLocation()),
+    provideHttpClient()
+  ]
+};
+</file>
+
+<file path="src/app/app.routes.ts">
+import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { CertificatesComponent } from './certificates/certificates.component';
+import { ContactComponent } from './contact/contact.component';
+
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'certificates', component: CertificatesComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: '**', redirectTo: '' }
+];
+</file>
+
+<file path="src/app/certificates/certificates.component.css">
+
+</file>
+
+<file path="src/app/certificates/certificates.component.html">
+<section class="certificate-hero">
+  <div class="container">
+    <h1>My Certificates</h1>
+    <p>A collection of certifications and achievements that showcase my skills and dedication to continuous learning.</p>
+  </div>
+</section>
+
+<section class="certificates-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Certifications & Achievements</h2>
+      <div class="filter-controls">
+        <div class="sort-controls">
+          <button *ngFor="let f of filters" class="filter-btn" [class.active]="activeFilter === f.key" (click)="setFilter(f.key)">{{ f.label }}</button>
+        </div>
+        <div class="sort-controls">
+          <button class="sort-btn" [class.active]="activeSort==='date'" (click)="setSort('date')"><i class="fas fa-calendar-alt"></i> Date</button>
+          <button class="sort-btn" [class.active]="activeSort==='rating'" (click)="setSort('rating')"><i class="fas fa-star"></i> Rating</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="certificates-grid">
+      <div *ngIf="displayed.length === 0" class="empty-state">
+        <i class="fas fa-certificate"></i>
+        <h3>No certificates found</h3>
+        <p>Try selecting a different filter category</p>
+      </div>
+      <div *ngFor="let cert of displayed" class="certificate-card fade-in" [attr.data-category]="cert.category">
+        <img [src]="cert.image" [alt]="cert.title" class="certificate-image" />
+        <div class="certificate-content">
+          <div class="certificate-header">
+            <div class="certificate-badge"><i [class]="'fas fa-' + cert.icon"></i></div>
+            <div class="certificate-title">
+              <span class="certificate-category">{{ getCategoryName(cert.category) }}</span>
+              <h3>{{ cert.title }}</h3>
+            </div>
+          </div>
+          <p>{{ cert.description }}</p>
+          <div class="certificate-meta">
+            <span><i class="fas fa-university"></i> {{ cert.issuer }}</span>
+            <span><i class="far fa-calendar"></i> {{ formatDate(cert.date) }}</span>
+          </div>
+          <div class="certificate-footer">
+            <a href="#" class="certificate-link" (click)="$event.preventDefault(); openModal(cert.image)">
+              View Certificate <i class="fas fa-external-link-alt"></i>
+            </a>
+            <span class="certificate-rating"><i class="fas fa-star"></i> {{ cert.rating }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" [style.display]="modalOpen ? 'flex' : 'none'" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="closeModal()"><i class="fas fa-times"></i></button>
+    <img class="modal-image" [src]="modalImage" alt="Certificate Preview" />
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Youssef Yasser</h3>
+        <p>Computer Science Student & Developer</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/youssef-yasser-0b9097333/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/itz-youssef" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Youssef Yasser. All rights reserved.</p>
+      <p>Page | 03</p>
+    </div>
+  </div>
+</footer>
+</file>
+
+<file path="src/app/contact/contact.component.css">
+
+</file>
+
+<file path="src/app/contact/contact.component.html">
+<section class="page-header">
+  <div class="container">
+    <h1>Contact Me</h1>
+    <p>Get in touch for collaborations or inquiries</p>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Let's Connect</h2>
+        <p>I'm always interested in new opportunities, collaborations, or just having a conversation about technology and software development.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div><h3>Email</h3><p>Available upon request</p></div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div><h3>Location</h3><p>Cairo, Egypt</p></div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-university"></i>
+            <div><h3>Education</h3><p>Cairo University</p></div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/youssef-yasser-0b9097333/" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/itz-youssef" target="_blank" class="social-btn"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2>Send a Message</h2>
+        <div id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" [(ngModel)]="formData.name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" [(ngModel)]="formData.email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" [(ngModel)]="formData.subject" name="subject" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" [(ngModel)]="formData.message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="submit()" [disabled]="sending">Send Message</button>
+          <p *ngIf="status" [style.color]="statusColor" style="margin-top:1rem;text-align:center;">{{ status }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Youssef Yasser</h3>
+        <p>Computer Science Student & Developer</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/youssef-yasser-0b9097333/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/itz-youssef" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Youssef Yasser. All rights reserved.</p>
+      <p>Page | 04</p>
+    </div>
+  </div>
+</footer>
+</file>
+
+<file path="src/app/github.service.ts">
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+@Injectable({ providedIn: 'root' })
+export class GithubService {
+  constructor(private http: HttpClient) {}
+
+  getRepos(): Observable<any[]> {
+    return this.http.get<any[]>(
+      'https://api.github.com/users/itz-youssef/repos?sort=updated&per_page=6'
+    ).pipe(catchError(() => of([])));
+  }
+
+  getIcon(lang: string): string {
+    const icons: Record<string, string> = {
+      JavaScript: 'js', Python: 'python', Java: 'java',
+      'C++': 'cuttlefish', HTML: 'html5', CSS: 'css3-alt',
+      TypeScript: 'js-square', PHP: 'php'
+    };
+    return icons[lang] || 'code';
+  }
+}
+</file>
+
+<file path="src/app/home/home.component.css">
+/* Home component extra styles - main styles in global styles.css */
+</file>
+
+<file path="src/app/navbar/navbar.component.html">
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a routerLink="/">Youssef Yasser</a>
+    </div>
+    <div class="nav-menu" [class.active]="menuOpen">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-link" (click)="closeMenu()">Home</a>
+      <a routerLink="/about" routerLinkActive="active" class="nav-link" (click)="closeMenu()">About Me</a>
+      <a routerLink="/certificates" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Certificates</a>
+      <a routerLink="/contact" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Contact</a>
+      <button class="theme-toggle" (click)="toggleTheme()">
+        <i [class]="themeService.isDark() ? 'fas fa-sun' : 'fas fa-moon'"></i>
+      </button>
+    </div>
+    <div class="hamburger" [class.active]="menuOpen" (click)="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </div>
+</nav>
+</file>
+
+<file path="src/app/navbar/navbar.component.ts">
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ThemeService } from '../theme.service';
+
+@Component({
+  selector: 'app-navbar',
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, CommonModule],
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent {
+  menuOpen = false;
+
+  constructor(public themeService: ThemeService) {}
+
+  toggleMenu() { this.menuOpen = !this.menuOpen; }
+  closeMenu() { this.menuOpen = false; }
+  toggleTheme() { this.themeService.toggle(); }
+}
+</file>
+
+<file path="src/app/preloader/preloader.component.html">
+<div id="preloader" [class.loader-hidden]="hidden">
+  <div class="loader-container">
+    <div class="spinner"></div>
+    <p>Loading</p>
+  </div>
+</div>
+</file>
+
+<file path="src/app/preloader/preloader.component.ts">
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-preloader',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './preloader.component.html',
+  styleUrls: ['./preloader.component.css']
+})
+export class PreloaderComponent {
+  @Input() hidden = false;
+}
+</file>
+
+<file path="src/app/theme.service.ts">
+import { Injectable } from '@angular/core';
+
+declare const particlesJS: any;
+
+@Injectable({ providedIn: 'root' })
+export class ThemeService {
+  private current: string = 'light';
+
+  init() {
+    this.current = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', this.current);
+    setTimeout(() => this.initParticles(), 300);
+  }
+
+  toggle() {
+    this.current = this.current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', this.current);
+    localStorage.setItem('theme', this.current);
+    this.destroyParticles();
+    setTimeout(() => this.initParticles(), 50);
+  }
+
+  isDark(): boolean {
+    return this.current === 'dark';
+  }
+
+  private destroyParticles() {
+    if ((window as any).pJSDom?.length > 0) {
+      try {
+        (window as any).pJSDom[0].pJS.fn.vendors.destroypJS();
+        (window as any).pJSDom = [];
+      } catch (e) {}
+    }
+  }
+
+  initParticles() {
+    if (typeof particlesJS === 'undefined') {
+      setTimeout(() => this.initParticles(), 200);
+      return;
+    }
+    const el = document.getElementById('particles-js');
+    if (!el) return;
+    const color = this.current === 'dark' ? '#4da8da' : '#ca42f7';
+    const line  = this.current === 'dark' ? '#4da8da' : '#ac4ccc';
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: color },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+        size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
+        line_linked: { enable: true, distance: 150, color: line, opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, random: true, out_mode: 'out', attract: { enable: true, rotateX: 600, rotateY: 1200 } }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
+        modes: { grab: { distance: 140, line_linked: { opacity: 0.8 } }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+  }
+}
+</file>
+
+<file path="src/assets/.gitkeep">
+
+</file>
+
+<file path="src/main.ts">
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));
+</file>
+
+<file path="src/public/_redirects">
+/*    /index.html    200
+</file>
+
+<file path=".gitignore">
+/dist
+/tmp
+/out-tsc
+/bazel-out
+/node_modules
+npm-debug.log
+yarn-error.log
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+.DS_Store
+Thumbs.db
+</file>
+
+<file path="angular.json">
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "portfolio": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:class": { "skipTests": true },
+        "@schematics/angular:component": { "skipTests": true },
+        "@schematics/angular:directive": { "skipTests": true },
+        "@schematics/angular:guard": { "skipTests": true },
+        "@schematics/angular:interceptor": { "skipTests": true },
+        "@schematics/angular:pipe": { "skipTests": true },
+        "@schematics/angular:resolver": { "skipTests": true },
+        "@schematics/angular:service": { "skipTests": true }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/portfolio",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "src/public",
+                "output": "/"
+              }
+            ],
+            "styles": ["src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": { "buildTarget": "portfolio:build:production" },
+            "development": { "buildTarget": "portfolio:build:development" }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": { "buildTarget": "portfolio:build" }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}
+</file>
+
+<file path="README.md">
+# Youssef Yasser Portfolio — Angular Version
+
+## Project Structure
+```
+src/app/
+  app.component.*       — Root shell (navbar + router-outlet + preloader)
+  app.routes.ts         — All page routes
+  app.config.ts         — App configuration (HttpClient, hash routing)
+  navbar/               — Sticky navigation with theme toggle
+  home/                 — Home page (hero, projects, skills, etc.)
+  about/                — About page (education, interests)
+  certificates/         — Certificates with filter/sort/modal
+  contact/              — Contact form (Formspree)
+  preloader/            — Loading screen
+  sheets.service.ts     — Google Sheets CMS integration
+  github.service.ts     — GitHub API integration
+  theme.service.ts      — Dark/light theme + particles.js
+src/styles.css          — All global CSS
+```
+
+## How to Run Locally
+```bash
+npm install
+ng serve
+```
+Open http://localhost:4200
+
+## How to Deploy
+```bash
+ng build --configuration=production
+# Push dist/portfolio/browser/ to your hosting
+```
+
+## Notes
+- Uses **hash routing** (`/#/about`) for GitHub Pages compatibility
+- Media files (images, CV, favicon) must be placed in `src/public/media/`
+- Angular.json is configured to copy `src/public/` to the build output root
+- Chatbase widget and particles.js are loaded from CDN in index.html
+</file>
+
+<file path="src/app/home/home.component.html">
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1>I am <span>{{ heroName }}</span></h1>
+      <p>{{ heroDesc }}</p>
+      <div class="hero-buttons">
+        <a href="media/Youssef_CV_Final.pdf" target="_blank" class="btn btn-accent">
+          <i class="fas fa-file-download"></i> Download CV
+        </a>
+        <a routerLink="/about" class="btn btn-primary">Explore Now</a>
+        <a href="#projects" class="btn btn-secondary">
+          <i class="fas fa-play"></i> View Projects
+        </a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img [src]="profileImg" alt="Youssef Yasser" class="profile-image" />
+    </div>
+  </div>
+</section>
+
+<!-- Introduction -->
+<section class="intro">
+  <div class="container">
+    <h2>Introduction</h2>
+    <p>I'm a Computer Science student with a strong base and passion for technology and software development. My journey in programming started with a curiosity about how things work, and it has evolved into a dedication to creating efficient, user-friendly applications.</p>
+    <p>I enjoy tackling complex problems and transforming ideas into functional software. My current focus is on expanding my knowledge in Machine learning, Deep learning, and exploring the AI development track.</p>
+    <div class="intro-grid">
+      <div class="intro-card">
+        <h3>About Me</h3>
+        <p>Dedicated Computer Science student with expertise in multiple programming languages and frameworks. Always eager to learn new technologies and take on challenging projects.</p>
+        <a routerLink="/about" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="intro-card">
+        <h3>My Portfolio</h3>
+        <p>Collection of projects showcasing my skills in web development, software engineering, and problem-solving. Each project represents a learning milestone in my development journey.</p>
+        <a href="#projects" class="read-more">View Projects <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Proficiency Table -->
+<section class="proficiency-section">
+  <div class="container">
+    <h2>Proficiency Level</h2>
+    <div class="table-responsive">
+      <table class="proficiency-table">
+        <thead>
+          <tr><th>Technology</th><th>Level</th><th>Progress</th></tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of proficiency" class="table-row-animate">
+            <td><i [class]="item.icon" style="color: var(--primary); margin-right: 8px;"></i> {{ item.name }}</td>
+            <td>{{ item.level }}%</td>
+            <td>
+              <div class="table-progress">
+                <div class="table-progress-fill" [style.--progress]="item.level + '%'"></div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Featured -->
+<section id="featured" class="featured-section" *ngIf="featured">
+  <div class="container">
+    <h2>Featured Highlight</h2>
+    <div class="featured-container">
+      <div class="featured-card fade-in">
+        <div class="featured-badge">{{ featured.badge }}</div>
+        <div class="featured-image" [style.background-image]="'url(' + featured.image + ')'"></div>
+        <div class="featured-content">
+          <h3>{{ featured.title }}</h3>
+          <p>{{ featured.description }}</p>
+          <a [href]="featured.link" target="_blank" class="btn btn-primary">
+            View Document <i class="fas fa-external-link-alt" style="margin-left:5px"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="experience" *ngIf="experience.length > 0">
+  <div class="container">
+    <h2>Experience</h2>
+    <div class="experience-timeline">
+      <div *ngFor="let exp of experience" class="experience-item fade-in">
+        <div class="exp-dot"></div>
+        <div class="exp-content">
+          <h3>{{ exp.role }}</h3>
+          <h4>{{ exp.company }} | <span>{{ exp.duration }}</span></h4>
+          <p>{{ exp.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GitHub Projects -->
+<section id="projects" class="projects">
+  <div class="container">
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <div *ngIf="loadingRepos" class="loading">Loading projects...</div>
+      <div *ngFor="let repo of githubRepos" class="project-card">
+        <div class="project-icon">
+          <i [class]="'fab fa-' + getIcon(repo.language)"></i>
+        </div>
+        <h3>{{ repo.name }}</h3>
+        <p>{{ repo.description || 'No description available' }}</p>
+        <div class="project-meta">
+          <span class="language">{{ repo.language || 'Various' }}</span>
+          <span class="stars"><i class="fas fa-star"></i> {{ repo.stargazers_count }}</span>
+        </div>
+        <a [href]="repo.html_url" target="_blank" class="project-link">View on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Projects -->
+<section id="mainprojects" class="mainprojects" *ngIf="mainProjects.length > 0">
+  <h2>Main Projects</h2>
+  <div style="display:flex;flex-direction:column;gap:3rem;width:100%;align-items:center;">
+    <div *ngFor="let p of mainProjects" class="mainprojectscards fade-in">
+      <div class="mainprojecttext">
+        <h1>{{ p.title }}</h1>
+        <p>{{ p.description }}</p>
+        <div class="mainproject-actions">
+          <a [href]="p.github" target="_blank" class="btn btn-primary github-btn">
+            <i [class]="'fab ' + (isKaggle(p.github) ? 'fa-kaggle' : 'fa-github')"></i>
+            View on {{ isKaggle(p.github) ? 'Kaggle' : 'GitHub' }}
+          </a>
+        </div>
+      </div>
+      <div class="mainprojectimage" [style.background-image]="'url(' + p.image + ')'"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="skills">
+  <div class="container">
+    <h2>Technical Skills</h2>
+    <div class="skills-container">
+      <div class="skill-category">
+        <h3>Programming Languages</h3>
+        <div class="skill-list">
+          <span *ngFor="let s of skills.languages" class="skill-tag">{{ s }}</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Artificial Intelligence</h3>
+        <div class="skill-list">
+          <span *ngFor="let s of skills.ai" class="skill-tag">{{ s }}</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Tools & Technologies</h3>
+        <div class="skill-list">
+          <span *ngFor="let s of skills.tools" class="skill-tag">{{ s }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Youssef Yasser</h3>
+        <p>Computer Science Student & Developer</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/youssef-yasser-0b9097333/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/itz-youssef" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Youssef Yasser. All rights reserved.</p>
+      <p>Page | 01</p>
+    </div>
+  </div>
+</footer>
+</file>
+
+<file path="src/app/loading.services.ts">
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class LoadingService {
+  private loadingSubject = new BehaviorSubject<boolean>(true);
+  loading$ = this.loadingSubject.asObservable();
+  private fallbackTimer: any;
+
+  show() {
+    this.loadingSubject.next(true);
+    // Hard fallback: never stay loading more than 6 seconds
+    clearTimeout(this.fallbackTimer);
+    this.fallbackTimer = setTimeout(() => {
+      this.loadingSubject.next(false);
+    }, 6000);
+  }
+
+  hide() {
+    clearTimeout(this.fallbackTimer);
+    setTimeout(() => {
+      this.loadingSubject.next(false);
+    }, 400);
+  }
+}
+</file>
+
+<file path="src/app/navbar/navbar.component.css">
+
+</file>
+
+<file path="src/app/sheets.service.ts">
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
+const SHEET_ID = '1qUjr34HZloU2QYjip8yAPwRS6FOAqRp0TPOnKnImKxs';
+const API_KEY  = 'AIzaSyDApsCPIpowQgZ1IwHmrk1VOGPRknBtJMg';
+const BASE     = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values`;
+
+@Injectable({ providedIn: 'root' })
+export class SheetsService {
+  constructor(private http: HttpClient) {}
+
+  private get(range: string): Observable<any[][]> {
+    return this.http.get<any>(`${BASE}/${range}?key=${API_KEY}`).pipe(
+      map(r => r.values || []),
+      catchError(() => of([]))
+    );
+  }
+
+  getSettings(): Observable<Record<string, string>> {
+    return this.get('Sheet1!A1:B50').pipe(
+      map(rows => Object.fromEntries(rows) as Record<string, string>)
+    );
+  }
+
+  getCertificates(): Observable<any[]> {
+    return this.get('Certificates!A2:G200').pipe(
+      map(rows => rows.filter(r => r.length >= 4 && r[0]).map((r, i) => ({
+        id: i + 1,
+        title: r[0] || '',
+        issuer: r[1] || '',
+        date: r[2] || '',
+        category: r[3] || 'programming',
+        description: r[4] || '',
+        image: r[5] || '',
+        rating: Number(r[6] || 0),
+        icon: r[3] === 'ai' ? 'brain' : r[3] === 'soft-skills' ? 'user' : 'code',
+        link: '#'
+      })))
+    );
+  }
+
+  getExperience(): Observable<any[]> {
+    return this.get('Experience!A2:D20').pipe(
+      map(rows => rows.filter(r => r[0]).map(r => ({
+        role: r[0] || '', company: r[1] || '', duration: r[2] || '', description: r[3] || ''
+      })))
+    );
+  }
+
+  getFeatured(): Observable<any | null> {
+    return this.get('Featured!A2:E2').pipe(
+      map(rows => rows.length > 0 && rows[0][0] ? {
+        title: rows[0][0] || '', description: rows[0][1] || '',
+        image: rows[0][2] || '', link: rows[0][3] || '#', badge: rows[0][4] || 'Offer Letter'
+      } : null)
+    );
+  }
+
+  getMainProjects(): Observable<any[]> {
+    return this.get('MainProjects!A2:D20').pipe(
+      map(rows => rows.filter(r => r[0]).map(r => ({
+        title: r[0] || '', description: r[1] || '', image: r[2] || '', github: r[3] || '#'
+      })))
+    );
+  }
+}
+</file>
+
+<file path="tsconfig.app.json">
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.d.ts"]
+}
+</file>
+
+<file path="tsconfig.json">
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "dom"]
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
+</file>
+
+<file path="tsconfig.spec.json">
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": ["jasmine"]
+  },
+  "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
+}
+</file>
+
+<file path="src/app/about/about.component.html">
+<!-- About Header -->
+<section class="page-header">
+  <div class="container">
+    <h1>About Me</h1>
+    <p>Just a curious developer learning, building, and growing</p>
+  </div>
+</section>
+
+<!-- About Content -->
+<section class="about-content">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>My Vision</h2>
+        <p>{{ visionText }}</p>
+        <p></p>
+        <h2>My Mission</h2>
+        <p>{{ missionText }}</p>
+        <p></p>
+
+        <div *ngFor="let edu of education" class="education">
+          <div class="education-item">
+            <div class="left-edu">
+              <h4>{{ edu.title }}</h4>
+              <p>{{ edu.desc }}</p>
+              <p class="date">{{ edu.date }}</p>
+            </div>
+            <div class="edu-image" [id]="edu.id"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-image">
+        <img [src]="profileImg" alt="Youssef Yasser" class="profile-image about-profile" />
+        <div class="about-links">
+          <a *ngFor="let link of links" [href]="link.href" target="_blank" class="social-link">
+            <i [class]="link.icon"></i> {{ link.label }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interests -->
+<section class="interests">
+  <div class="container">
+    <h2>Interests & Focus Areas</h2>
+    <div class="interests-grid">
+      <div *ngFor="let item of interests" class="interest-card">
+        <i [class]="item.icon"></i>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Youssef Yasser</h3>
+        <p>Computer Science Student & Developer</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/youssef-yasser-0b9097333/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/itz-youssef" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Youssef Yasser. All rights reserved.</p>
+      <p>Page | 02</p>
+    </div>
+  </div>
+</footer>
+</file>
+
+<file path="src/app/contact/contact.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { LoadingService } from '../loading.services';
+
+const FORM_ENDPOINT = 'https://formspree.io/f/xeobvplw';
+
+@Component({
+  selector: 'app-contact',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.css']
+})
+export class ContactComponent implements OnInit {
+  formData = { name: '', email: '', subject: '', message: '' };
+  status = '';
+  statusColor = '';
+  sending = false;
+
+  constructor(private loadingService: LoadingService) {}
+
+  ngOnInit() {
+    this.loadingService.hide();
+  }
+
+  async submit() {
+    this.sending = true;
+    this.status = 'Sending...';
+    this.statusColor = 'var(--primary)';
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...this.formData, _replyto: this.formData.email })
+      });
+      if (res.ok) {
+        this.status = '✅ Message sent successfully! I\'ll be in touch soon.';
+        this.statusColor = 'green';
+        this.formData = { name: '', email: '', subject: '', message: '' };
+      } else {
+        this.status = '❌ Submission failed. Please try again.';
+        this.statusColor = 'red';
+      }
+    } catch {
+      this.status = '❌ An unexpected error occurred.';
+      this.statusColor = 'red';
+    } finally {
+      this.sending = false;
+      setTimeout(() => this.status = '', 5000);
+    }
+  }
+}
+</file>
+
+<file path="src/app/preloader/preloader.component.css">
+#preloader {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #121212; display: flex; justify-content: center;
+  align-items: center; z-index: 10000;
+  opacity: 1;
+  visibility: visible;
+}
+
+.loader-container { text-align: center; }
+
+.spinner {
+  width: 50px; height: 50px;
+  border: 5px solid var(--border); border-top: 5px solid var(--primary);
+  border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem;
+}
+
+#preloader p { color: var(--secondary); font-weight: 600; letter-spacing: 1px; }
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.loader-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease-in-out, visibility 0.6s;
+}
+</file>
+
+<file path="src/index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Youssef Yasser's Portfolio</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="media/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <meta property="og:title" content="Youssef Yasser | AI & Machine Learning Engineer" />
+    <meta property="og:description" content="Portfolio of Youssef Yasser, a CS student specializing in Machine Learning, Deep Learning, and Software Development." />
+    <meta property="og:image" content="https://i.postimg.cc/wBm96XNY/ddd-(1).jpg" />
+    <meta property="og:url" content="https://youssef-yasser-portifolio.vercel.app/" />
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  </head>
+  <body>
+    <app-root></app-root>
+    <script>
+      (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="B1iI38dcWet-pKDPhMT4e";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
+  </body>
+</html>
+</file>
+
+<file path="src/styles.css">
+:root {
+  --bg-color: #f8f9fa8d;
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --nav-bg: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --primary: #d16af4;
+  --secondary: #542a62;
+  --accent: #f1c40f;
+  --muted: #666;
+  --border: #ddd;
+  --particle-color: #3498db;
+  --particle-line-color: #3498db;
+  --footer-color: #804096b7;
+}
+
+[data-theme="dark"] {
+  --bg-color: #00000089;
+  --text-color: #e0e0e0;
+  --card-bg: #2d2d2d;
+  --nav-bg: #2d2d2d;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --primary: #24f4f6;
+  --secondary: #24f4f6;
+  --accent: #ffb74d;
+  --muted: #b0b0b0;
+  --border: #444;
+  --particle-color: #542a62;
+  --particle-line-color: #542a62;
+  --footer-color: #24f4f6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: var(--bg-color);
+}
+
+body {
+  position: relative;
+  z-index: 1;
+}
+
+.navbar {
+  background-color: var(--nav-bg);
+  box-shadow: 0 2px 10px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding-left: 2rem;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.nav-logo a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-link:hover { color: var(--primary); }
+
+.nav-link.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  padding-right: 2rem;
+}
+
+.theme-toggle:hover { background-color: var(--border); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-color);
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.hero {
+  padding: 5rem 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  position: relative;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 150px;
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  max-width: 600px;
+  flex: 1;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-content h1 span { color: var(--primary); }
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  color: var(--muted);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary { background-color: var(--primary); color: black; }
+
+.btn-primary:hover {
+  background-color: var(--secondary);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  color: #000000 !important;
+  border: 2px solid var(--accent);
+  font-weight: 700;
+}
+
+.btn-accent:hover {
+  background-color: transparent;
+  color: var(--accent) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 320px;
+}
+
+.hero-image img {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.hero-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+section {
+  padding: 5rem 0;
+  background-color: var(--bg-color);
+  position: relative;
+  z-index: 2;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--secondary);
+}
+
+.intro p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.intro-card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--shadow);
+  transition: transform 0.3s;
+  border: 1px solid var(--border);
+}
+
+.intro-card:hover { transform: translateY(-10px); }
+.intro-card h3 { color: var(--primary); margin-bottom: 1rem; }
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.read-more i { margin-left: 0.5rem; transition: transform 0.3s; }
+.read-more:hover i { transform: translateX(5px); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--shadow);
+  text-align: center;
+  transition: transform 0.3s;
+  border: 1px solid var(--border);
+}
+
+.project-card:hover { transform: translateY(-10px); }
+.project-icon { font-size: 3rem; color: var(--primary); margin-bottom: 1.5rem; }
+.project-card h3 { margin-bottom: 1rem; color: var(--secondary); }
+.project-card p { margin-bottom: 1.5rem; color: var(--muted); }
+
+.project-link {
+  display: inline-block;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.project-link:hover { border-color: var(--primary); }
+
+.loading {
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 2rem;
+  color: var(--muted);
+}
+
+.mainprojects {
+  width: 100%;
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.mainprojectscards {
+  background-color: var(--card-bg);
+  width: 90%;
+  max-width: 1180px;
+  min-height: 500px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px var(--shadow);
+  padding: 20px;
+}
+
+.mainprojectscards:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px var(--shadow);
+}
+
+.mainprojecttext {
+  width: 55%;
+  padding: 30px 40px 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mainprojecttext h1 {
+  color: var(--secondary);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.mainprojecttext p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-color);
+  opacity: 0.85;
+}
+
+.mainproject-actions { margin-top: 2rem; }
+
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.github-btn i { font-size: 1.3rem; }
+
+.mainprojectimage {
+  width: 45%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  margin: 15px 15px 15px 0;
+  min-height: 350px;
+  transition: transform 0.3s ease;
+}
+
+.mainprojectimage:hover { transform: scale(1.03); }
+
+@media (max-width: 992px) {
+  .mainprojectscards { flex-direction: column-reverse; padding: 15px; }
+  .mainprojecttext { width: 100%; padding: 20px 10px; }
+  .mainprojectimage { width: 100%; height: 300px; margin: 0; border-radius: 12px; }
+  .mainprojecttext h1 { font-size: 1.6rem; }
+  .mainprojecttext p { font-size: 1rem; }
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.skill-category h3 { text-align: left; margin-bottom: 1rem; color: var(--secondary); }
+.skill-list { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+
+.skill-tag {
+  background-color: var(--card-bg);
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  transition: transform 0.3s;
+}
+
+.skill-tag:hover { transform: translateY(-10px); }
+
+.footer {
+  background-color: var(--footer-color);
+  color: #000000;
+  padding: 3rem 0 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.footer-info h3 { margin-bottom: 0.5rem; color: black; }
+.footer-info p { color: black; }
+.footer-links { display: flex; gap: 1rem; }
+.footer-links a { color: black; font-size: 1.5rem; transition: color 0.3s; }
+.footer-links a:hover { color: var(--primary); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  border-top: 1px solid #000000;
+  font-size: 0.9rem;
+  color: black;
+}
+
+.page-header {
+  padding: 3rem 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.page-header h1 { font-size: 3rem; margin-bottom: 1rem; color: var(--secondary); }
+
+.about-content { background-color: var(--bg-color); position: relative; z-index: 2; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-text h2 { text-align: left; margin-top: 2rem; margin-bottom: 1rem; }
+.about-text h2:first-of-type { margin-top: 0; }
+.about-text p { margin-bottom: 1.5rem; }
+
+.education { margin-top: 2rem; }
+.education h3 { color: var(--secondary); margin-bottom: 1rem; }
+
+.education-item {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+}
+
+.education-item h4 { color: var(--primary); margin-bottom: 0.5rem; }
+
+.edu-image {
+  min-width: 300px;
+  height: 300px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#cairo-uni { background-image: url("../src/public/media/cairo-uni.jpg"); }
+#ai { background-image: url("../src/public/media/udemy22.webp"); }
+#Coursera { background-image: url("../src/public/media/coursera2.png"); }
+#nvidia { background-image: url("../src/public/media/Nvidia.jpg"); }
+#datacamp { background-image: url("../src/public/media/dc3.jpg"); }
+#ITI { background-image: url("../src/public/media/maharatechiti_logo.jpg"); }
+
+.date { color: var(--muted); font-style: italic; }
+
+.about-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about-profile {
+  width: 380px;
+  height: 380px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 4px solid var(--primary);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.about-profile:hover { transform: scale(1.03); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); }
+
+.about-links {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 5px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: all 0.3s;
+  border: 1px solid var(--border);
+}
+
+.social-link:hover { background-color: var(--primary); color: white; }
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.interest-card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--shadow);
+  text-align: center;
+  transition: transform 0.3s;
+  border: 1px solid var(--border);
+}
+
+.interest-card:hover { transform: translateY(-10px); }
+.interest-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem; }
+.interest-card h3 { margin-bottom: 1rem; color: var(--secondary); }
+
+.certificate-hero {
+  padding: 4rem 0;
+  color: var(--text-color);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-hero h1 { color: var(--secondary); font-size: 3.5rem; margin-bottom: 1rem; position: relative; z-index: 2; }
+.certificate-hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; position: relative; z-index: 2; opacity: 0.9; }
+
+.certificates-section { padding: 5rem 0; position: relative; z-index: 2; background-color: var(--bg-color); }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-header h2 { font-size: 2.5rem; color: var(--secondary); margin: 0; text-align: left; }
+
+.filter-controls { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+.filter-btn {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background-color: var(--primary);
+  color: black;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sort-controls { display: flex; gap: 0.5rem; align-items: center; }
+
+.sort-btn {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-btn:hover, .sort-btn.active { background-color: var(--primary); color: black; }
+
+.featured-section { padding: 4rem 0; background-color: var(--bg-color); position: relative; z-index: 2; }
+
+.featured-card {
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--primary);
+  box-shadow: 0 10px 30px var(--shadow);
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.featured-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(209, 106, 244, 0.15); }
+
+.featured-badge {
+  position: absolute;
+  top: 25px;
+  right: -40px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #000;
+  padding: 8px 45px;
+  transform: rotate(45deg);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 10;
+  text-transform: uppercase;
+}
+
+.featured-image { width: 45%; background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 350px; }
+
+.featured-content { padding: 3rem; width: 55%; display: flex; flex-direction: column; justify-content: center; }
+
+.featured-content h3 { color: var(--secondary); font-size: 2.2rem; margin-bottom: 1rem; line-height: 1.3; }
+.featured-content p { color: var(--text-color); font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.7; opacity: 0.9; }
+
+@media (max-width: 992px) {
+  .featured-card { flex-direction: column-reverse; }
+  .featured-image { width: 100%; height: 250px; min-height: 250px; }
+  .featured-content { width: 100%; padding: 2rem; }
+  .featured-content h3 { font-size: 1.8rem; }
+}
+
+.certificates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; }
+
+.certificate-card {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(20px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.certificate-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px var(--shadow); }
+.certificate-image { width: 100%; height: 200px; object-fit: cover; border-bottom: 3px solid var(--primary); }
+
+.certificate-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+
+.certificate-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+
+.certificate-badge {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.certificate-title { flex-grow: 1; margin-left: 1rem; }
+
+.certificate-category {
+  display: inline-block;
+  background-color: var(--primary);
+  color: black;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.certificate-card h3 { margin-bottom: 0.8rem; color: var(--secondary); font-size: 1.3rem; line-height: 1.3; }
+.certificate-card p { color: var(--muted); margin-bottom: 1rem; line-height: 1.5; flex-grow: 1; }
+
+.certificate-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.certificate-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+
+.certificate-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.certificate-link:hover { color: var(--secondary); transform: translateX(5px); }
+.certificate-rating { color: var(--accent); display: flex; align-items: center; gap: 0.3rem; }
+
+.fade-in { opacity: 1 !important; transform: translateY(0) !important; transition: opacity 0.6s, transform 0.6s; }
+
+.empty-state { grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--muted); }
+.empty-state i { font-size: 3rem; margin-bottom: 1rem; color: var(--border); }
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-image { width: 100%; height: auto; display: block; }
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.modal-close:hover { background-color: rgba(0, 0, 0, 0.9); }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.contact-info h2 { text-align: left; }
+.contact-info > p { margin-bottom: 2rem; color: var(--muted); }
+.contact-details { margin-bottom: 2rem; }
+
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+.contact-item i { font-size: 1.5rem; color: var(--primary); margin-top: 0.2rem; }
+.contact-item h3 { margin-bottom: 0.3rem; color: var(--secondary); }
+.social-links { display: flex; gap: 1rem; }
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 5px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: all 0.3s;
+  border: 1px solid var(--border);
+}
+
+.social-btn:hover { background-color: var(--primary); color: white; }
+
+.contact-form {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.contact-form h2 { text-align: left; margin-bottom: 1.5rem; }
+.form-group { margin-bottom: 1.5rem; }
+
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--secondary); }
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
+
+.proficiency-section { padding: 5rem 0; background-color: var(--bg-color); }
+
+.table-responsive {
+  max-width: 900px;
+  margin: 0 auto;
+  overflow-x: auto;
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.proficiency-table { width: 100%; border-collapse: collapse; text-align: left; }
+
+.proficiency-table th,
+.proficiency-table td { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border); color: var(--text-color); }
+
+.proficiency-table th { background-color: var(--nav-bg); color: var(--secondary); font-weight: 700; font-size: 1.1rem; }
+.proficiency-table tr:last-child td { border-bottom: none; }
+.proficiency-table tbody tr { transition: background-color 0.3s; }
+.proficiency-table tbody tr:hover { background-color: rgba(209, 106, 244, 0.05); }
+
+.table-progress {
+  width: 100%;
+  min-width: 150px;
+  height: 10px;
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.table-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.1, 0.5, 0.1, 1);
+}
+
+.table-row-animate { opacity: 0; transform: translateX(-20px); transition: opacity 0.5s, transform 0.5s; }
+.fade-in.table-row-animate { opacity: 1; transform: translateX(0); }
+.fade-in .table-progress-fill { width: var(--progress); }
+
+.experience-timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 20px 0; }
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  height: 100%;
+  width: 2px;
+  background-color: var(--primary);
+}
+
+.experience-item { position: relative; padding-left: 60px; margin-bottom: 40px; }
+
+.exp-dot {
+  position: absolute;
+  left: 14px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  border: 3px solid var(--bg-color);
+  z-index: 1;
+}
+
+.exp-content {
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 5px 15px var(--shadow);
+  transition: transform 0.3s;
+}
+
+.exp-content:hover { transform: translateX(10px); }
+.exp-content h3 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 5px; }
+.exp-content h4 { color: var(--primary); font-size: 1.1rem; margin-bottom: 15px; font-weight: 500; }
+.exp-content h4 span { color: var(--muted); font-size: 0.9rem; font-weight: 400; }
+
+.intro-card,
+.project-card,
+.interest-card,
+.certificate-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.project-meta { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem; color: var(--muted); }
+.language, .stars { display: flex; align-items: center; gap: 0.3rem; }
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #121212;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: opacity 0.6s ease-in-out, visibility 0.6s;
+}
+
+.loader-container { text-align: center; }
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--border);
+  border-top: 5px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+#preloader p { color: var(--secondary); font-weight: 600; letter-spacing: 1px; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.loader-hidden { opacity: 0; visibility: hidden; }
+
+router-outlet + * { display: block; }
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero-container { flex-direction: column; text-align: center; }
+  .hero-content { order: unset; padding-left: 0; padding-right: 0; }
+  .hero-image { order: unset; justify-content: center; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .footer-content { flex-direction: column; gap: 1.5rem; text-align: center; }
+}
+
+@media (max-width: 768px) {
+  .certificate-hero h1 { font-size: 2.5rem; }
+  .section-header { flex-direction: column; align-items: flex-start; }
+  .filter-controls { width: 100%; justify-content: flex-start; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+  .certificates-grid { grid-template-columns: 1fr; }
+  .certificate-header { flex-direction: column; }
+  .certificate-title { margin-left: 0; margin-top: 1rem; }
+  .about-grid { display: flex; flex-direction: column; }
+  .education-item { display: flex !important; flex-direction: column-reverse !important; align-items: center !important; text-align: center !important; gap: 1rem !important; }
+  .edu-image { width: 100% !important; min-width: 0 !important; height: 200px !important; margin: 0 auto !important; border-radius: 8px; }
+  .left-edu { width: 100% !important; }
+  .about-image { width: 100% !important; align-items: center !important; justify-content: center !important; margin: 0 auto 2rem auto !important; order: -1 !important; }
+  .about-profile { display: block !important; margin: 0 auto !important; max-width: 80% !important; }
+  .hamburger { display: flex; }
+  .nav-container { padding: 1rem 0.5rem; }
+  .nav-menu {
+    position: fixed !important; top: 0 !important; right: -280px !important; left: auto !important;
+    width: 280px !important; height: 100vh !important;
+    background-color: var(--nav-bg) !important; box-shadow: -5px 0 20px rgba(0,0,0,0.2) !important;
+    display: flex !important; flex-direction: column !important; justify-content: center !important;
+    align-items: center !important; gap: 2rem !important; z-index: 2000 !important;
+    transition: right 0.3s ease-in-out !important;
+  }
+  .nav-menu::before {
+    content: "\f0c9"; font-family: "Font Awesome 6 Free" !important; font-weight: 900 !important;
+    font-size: 3rem !important; color: var(--primary) !important; margin-bottom: 1rem !important; opacity: 0.8 !important;
+  }
+  .nav-menu.active { right: 0 !important; }
+  .nav-link { color: var(--text-color) !important; font-size: 1.2rem !important; font-weight: 500 !important; padding: 0.5rem 1rem !important; width: 100% !important; text-align: center !important; }
+  .nav-link:hover, .nav-link.active { color: var(--primary) !important; }
+  .hamburger { z-index: 2001 !important; position: relative; }
+  .hero-content h1 { font-size: 2.5rem; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .hero-image img { width: 280px; height: 280px; }
+  .about-profile { width: 300px; height: 300px; margin: 0 auto; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .table-responsive { width: 100%; }
+  .proficiency-table th, .proficiency-table td { padding: 0.8rem 0.5rem !important; font-size: 0.9rem; }
+  .table-progress { min-width: 70px; height: 8px; }
+  .experience-timeline::before { left: 10px; }
+  .exp-dot { left: 4px; }
+  .experience-item { padding-left: 40px; }
+}
+
+@media (max-width: 480px) {
+  .certificate-hero { padding: 3rem 0; }
+  .certificate-hero h1 { font-size: 2rem; }
+  .section-header h2 { font-size: 2rem; }
+  .hero-image img { width: 240px; height: 240px; }
+  .about-profile { width: 260px; height: 260px; }
+  .hero-content h1 { font-size: 2.8rem; }
+  .proficiency-table th, .proficiency-table td { padding: 0.6rem 0.2rem !important; font-size: 0.8rem; }
+  .proficiency-table th:first-child, .proficiency-table td:first-child { white-space: nowrap; }
+  .table-progress { min-width: 50px; }
+  .proficiency-table td i { margin-right: 4px !important; font-size: 0.85rem; }
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+  .hero-content { text-align: left; }
+  .hero-content h1, .hero-content p { text-align: left !important; }
+  .hero-buttons { justify-content: flex-start; }
+  .hero-image { justify-content: center; }
+}
+
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .hero-container { flex-direction: column; text-align: center; gap: 100px; }
+  .hero-content { text-align: left; margin-left: 0; }
+  .hero-content h1, .hero-content p { text-align: left; }
+  .hero-buttons { justify-content: left; }
+  .hero-image { justify-content: right; }
+}
+</file>
+
+<file path="src/app/certificates/certificates.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SheetsService } from '../sheets.service';
+import { LoadingService } from '../loading.services';
+
+@Component({
+  selector: 'app-certificates',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './certificates.component.html',
+  styleUrls: ['./certificates.component.css']
+})
+export class CertificatesComponent implements OnInit {
+  allCerts: any[] = [];
+  displayed: any[] = [];
+  activeFilter = 'all';
+  activeSort = '';
+  modalImage = '';
+  modalOpen = false;
+
+  filters = [
+    { key: 'all', label: 'All' },
+    { key: 'programming', label: 'Programming' },
+    { key: 'ai', label: 'AI/ML' },
+    { key: 'soft-skills', label: 'Soft Skills' }
+  ];
+
+  constructor(
+    private sheets: SheetsService,
+    private loadingService: LoadingService
+  ) {}
+
+  ngOnInit() {
+    this.loadingService.show();
+    this.sheets.getCertificates().subscribe({
+      next: certs => {
+        this.allCerts = certs;
+        this.displayed = [...certs];
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  setFilter(key: string) {
+    this.activeFilter = key;
+    this.applyFilterSort();
+  }
+
+  setSort(key: string) {
+    this.activeSort = key;
+    this.applyFilterSort();
+  }
+
+  private applyFilterSort() {
+    let result = this.activeFilter === 'all' ? [...this.allCerts]
+      : this.allCerts.filter(c => c.category === this.activeFilter);
+    if (this.activeSort === 'date') result.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    if (this.activeSort === 'rating') result.sort((a, b) => b.rating - a.rating);
+    this.displayed = result;
+  }
+
+  getCategoryName(cat: string): string {
+    const m: Record<string, string> = { programming: 'Programming', web: 'Web Development', ai: 'AI/ML', 'soft-skills': 'Soft Skills' };
+    return m[cat] || cat;
+  }
+
+  formatDate(d: string): string {
+    if (!d) return '';
+    const date = new Date(d);
+    if (isNaN(date.getTime())) return d;
+    return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  openModal(img: string) { this.modalImage = img; this.modalOpen = true; document.body.style.overflow = 'hidden'; }
+  closeModal() { this.modalOpen = false; document.body.style.overflow = 'auto'; }
+}
+</file>
+
+<file path="src/app/home/home.component.ts">
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { SheetsService } from '../sheets.service';
+import { GithubService } from '../github.service';
+import { LoadingService } from '../loading.services';
+import { forkJoin } from 'rxjs';
+import { finalize, timeout, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+
+@Component({
+  selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule, RouterLink],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit, AfterViewInit {
+  heroName = '';
+  heroDesc = '';
+  profileImg = '';
+  featured: any = null;
+  experience: any[] = [];
+  mainProjects: any[] = [];
+  githubRepos: any[] = [];
+  loadingRepos = true;
+
+  skills = {
+    languages: ['Python', 'Java', 'C++', 'JavaScript', 'SQL'],
+    ai: ['Machine Learning', 'Deep Learning', 'Modeling', 'Pytorch'],
+    tools: ['Git', 'GitHub', 'VS Code', 'MySQL']
+  };
+
+  proficiency = [
+    { name: 'Python', icon: 'fab fa-python', level: 85 },
+    { name: 'C++', icon: 'fab fa-cuttlefish', level: 75 },
+    { name: 'Machine Learning', icon: 'fas fa-brain', level: 80 },
+    { name: 'Deep Learning', icon: 'fas fa-network-wired', level: 70 },
+    { name: 'Java', icon: 'fas fa-database', level: 60 }
+  ];
+
+  constructor(
+    private sheets: SheetsService,
+    private github: GithubService,
+    private loadingService: LoadingService
+  ) {}
+
+  ngOnInit() {
+    this.loadingService.show();
+
+    forkJoin({
+      settings: this.sheets.getSettings(),
+      featured: this.sheets.getFeatured(),
+      experience: this.sheets.getExperience(),
+      mainProjects: this.sheets.getMainProjects(),
+      repos: this.github.getRepos()
+    })
+    .pipe(
+      timeout(8000),
+      catchError(() => of({ settings: {} as Record<string, string>, featured: null, experience: [], mainProjects: [], repos: [] })),
+      finalize(() => {
+        this.loadingService.hide();
+      })
+    )
+    .subscribe({
+      next: ({ settings, featured, experience, mainProjects, repos }) => {
+        const s = settings as Record<string, string>;
+        if (s['profile_img']) this.profileImg = s['profile_img'];
+        if (s['hero_name']) this.heroName = s['hero_name'];
+        if (s['hero_desc']) this.heroDesc = s['hero_desc'];
+        this.featured = featured;
+        this.experience = experience;
+        this.mainProjects = mainProjects;
+        this.githubRepos = repos;
+        this.loadingRepos = false;
+      },
+      error: (err) => {
+        console.error('API Error on Home Page:', err);
+        this.loadingRepos = false;
+      }
+    });
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => this.observeCards(), 500);
+  }
+
+  getIcon(lang: string): string { return this.github.getIcon(lang); }
+
+  isKaggle(url: string): boolean { return url?.includes('kaggle'); }
+
+  formatDate(d: string): string {
+    if (!d) return '';
+    const date = new Date(d);
+    if (isNaN(date.getTime())) return d;
+    return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  private observeCards() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-in'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.intro-card, .project-card, .interest-card, .table-row-animate').forEach(el => observer.observe(el));
+  }
+}
+</file>
+
+<file path="src/app/app.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
+import { PreloaderComponent } from './preloader/preloader.component';
+import { ThemeService } from './theme.service';
+import { LoadingService } from './loading.services';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, NavbarComponent, PreloaderComponent],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  loading = true;
+
+  constructor(
+    private themeService: ThemeService,
+    private loadingService: LoadingService
+  ) {}
+
+  ngOnInit() {
+    this.themeService.init();
+
+    this.loadingService.loading$.subscribe(isLoading => {
+      setTimeout(() => {
+        this.loading = isLoading;
+      });
+    });
+  }
+}
+</file>
+
+<file path="src/app/about/about.component.ts">
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { SheetsService } from '../sheets.service';
+import { LoadingService } from '../loading.services';
+
+@Component({
+  selector: 'app-about',
+  standalone: true,
+  imports: [CommonModule, RouterLink],
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.css']
+})
+export class AboutComponent implements OnInit, AfterViewInit {
+  visionText = '';
+  missionText = '';
+  profileImg = '';
+
+  education = [
+    { id: 'cairo-uni', title: 'Cairo University', desc: 'Bachelor of Computer Science', date: '2023 - 2027' },
+    { id: 'Coursera', title: 'Coursera Courses', desc: 'AI Development - Deep learning - Artificial neural networks', date: 'Issued 2025' },
+    { id: 'ai', title: 'Udemy Courses', desc: 'AI Development - Machine learning - Programming Languages', date: 'Issued 2025' },
+    { id: 'nvidia', title: 'NVIDIA Courses', desc: 'AI Development - Deep learning', date: 'Issued 2025' },
+    { id: 'datacamp', title: 'DataCamp', desc: 'Programming languages - Github', date: 'Issued 2025' },
+    { id: 'ITI', title: 'Mahara tech ITI', desc: 'Programming languages - basics', date: 'Issued 2025' }
+  ];
+
+  interests = [
+    { icon: 'fas fa-laptop-code', title: 'Software Development', desc: 'Building applications with clean, efficient code and user-friendly interfaces.' },
+    { icon: 'fas fa-brain', title: 'Artificial Intelligence', desc: 'Exploring machine learning algorithms and their practical applications, interested about Neural networks and Deep Learning in General.' },
+    { icon: 'fas fa-database', title: 'Marketing', desc: 'I am interested in marketing as a way to understand user needs, position products effectively, and turn technical solutions into real-world value.' },
+    { icon: 'fas fa-mobile-alt', title: 'Modeling', desc: 'Modeling is crafting clear and structured representations that simplify complex ideas.' }
+  ];
+
+  links = [
+    { href: 'https://www.linkedin.com/in/youssef-yasser-0b9097333/', icon: 'fab fa-linkedin', label: 'LinkedIn Profile' },
+    { href: 'https://github.com/itz-youssef', icon: 'fab fa-github', label: 'GitHub Profile' },
+    { href: 'media/Youssef_CV_Final.pdf', icon: 'fas fa-file-download', label: 'Download CV' },
+    { href: 'https://linktr.ee/youssefyasser1', icon: 'fas fa-link', label: 'Linktree' },
+    { href: 'mailto:y.yousef312@outlook.com', icon: 'fas fa-envelope', label: 'Email Me' },
+    { href: 'https://codeforces.com/profile/Youssef_Yasser_Elsayed', icon: 'fas fa-chart-simple', label: 'Codeforces' }
+  ];
+
+  constructor(
+    private sheets: SheetsService,
+    private loadingService: LoadingService
+  ) {}
+
+  ngOnInit() {
+    this.loadingService.show();
+    this.sheets.getSettings().subscribe({
+      next: data => {
+        const s = data as Record<string, string>;
+        this.visionText = s['vision_text'] || '';
+        this.missionText = s['mission_text'] || '';
+        this.profileImg = s['profile_img'] || '';
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => this.observeCards(), 500);
+  }
+
+  private observeCards() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-in'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.interest-card').forEach(el => observer.observe(el));
+  }
+}
+</file>
+
+</files>

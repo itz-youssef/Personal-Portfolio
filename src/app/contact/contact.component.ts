@@ -12,7 +12,7 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xeobvplw';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent  {
   formData = { name: '', email: '', subject: '', message: '' };
   status = '';
   statusColor = '';
@@ -20,9 +20,7 @@ export class ContactComponent implements OnInit {
 
   constructor(private loadingService: LoadingService) {}
 
-  ngOnInit() {
-    this.loadingService.hide();
-  }
+  
 
   async submit() {
     this.sending = true;
