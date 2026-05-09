@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet, Router, NavigationStart } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PreloaderComponent } from './preloader/preloader.component';
 import { ThemeService } from './theme.service';
@@ -13,25 +13,21 @@ import { LoadingService } from '../app/loading.services';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loading = true;
+  loading = true; // Starts true for the initial website load
 
   constructor(
     private themeService: ThemeService,
-    private loadingService: LoadingService,
-    private router: Router
-  ) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.loadingService.show();
-      }
-    });
-  }
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit() {
     this.themeService.init();
     
     this.loadingService.loading$.subscribe(isLoading => {
-      this.loading = isLoading;
+      // Using setTimeout ensures Angular updates the UI safely in the background
+      setTimeout(() => {
+        this.loading = isLoading;
+      });
     });
   }
 }

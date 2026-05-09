@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LoadingService } from '../loading.services';
 
 const FORM_ENDPOINT = 'https://formspree.io/f/xeobvplw';
 
@@ -11,13 +12,21 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xeobvplw';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   formData = { name: '', email: '', subject: '', message: '' };
   status = '';
   statusColor = '';
   sending = false;
 
+  constructor(private loadingService: LoadingService) {}
+
+  ngOnInit() {
+    // Hide the loader immediately on the contact page
+    this.loadingService.hide();
+  }
+
   async submit() {
+    // ... your existing submit code ...
     this.sending = true;
     this.status = 'Sending...';
     this.statusColor = 'var(--primary)';
