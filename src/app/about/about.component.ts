@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SheetsService } from '../sheets.service';
+
 
 @Component({
   selector: 'app-about',
@@ -10,7 +11,7 @@ import { SheetsService } from '../sheets.service';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit , AfterViewInit {
   visionText = '';
   missionText = '';
   profileImg = '';
@@ -48,5 +49,15 @@ export class AboutComponent implements OnInit {
       this.missionText = data['mission_text'] || '';
       this.profileImg = data['profile_img'] || '';
     });
+  }
+  ngAfterViewInit() {
+  setTimeout(() => this.observeCards(), 500);
+  }
+
+  private observeCards() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-in'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.interest-card').forEach(el => observer.observe(el));
   }
 }
