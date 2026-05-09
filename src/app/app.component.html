@@ -1,4 +1,4 @@
-<app-preloader [hidden]="!loading"></app-preloader>
+<app-preloader [hidden]="(hidden$ | async) ?? true"></app-preloader>
 
 <div id="particles-js"></div>
 <app-navbar></app-navbar>
