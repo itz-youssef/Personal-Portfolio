@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SheetsService } from '../sheets.service';
 import { LoadingService } from '../loading.services';
-import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-certificates',
@@ -33,16 +32,16 @@ export class CertificatesComponent implements OnInit {
 
   ngOnInit() {
     this.loadingService.show();
-    
-    this.sheets.getCertificates()
-      .pipe(finalize(() => this.loadingService.hide()))
-      .subscribe({
-        next: (certs) => {
-          this.allCerts = certs;
-          this.displayed = [...certs];
-        },
-        error: (err) => console.error('API Error:', err)
-      });
+    this.sheets.getCertificates().subscribe({
+      next: certs => {
+        this.allCerts = certs;
+        this.displayed = [...certs];
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
   }
 
   setFilter(key: string) {
@@ -69,7 +68,10 @@ export class CertificatesComponent implements OnInit {
   }
 
   formatDate(d: string): string {
-    return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    if (!d) return '';
+    const date = new Date(d);
+    if (isNaN(date.getTime())) return d;
+    return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
   }
 
   openModal(img: string) { this.modalImage = img; this.modalOpen = true; document.body.style.overflow = 'hidden'; }

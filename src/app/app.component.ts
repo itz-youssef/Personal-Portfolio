@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PreloaderComponent } from './preloader/preloader.component';
@@ -17,16 +17,16 @@ export class AppComponent implements OnInit {
 
   constructor(
     private themeService: ThemeService,
-    private loadingService: LoadingService,
-    private cdr: ChangeDetectorRef
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit() {
     this.themeService.init();
-    
+
     this.loadingService.loading$.subscribe(isLoading => {
-      this.loading = isLoading;
-      this.cdr.detectChanges(); // Forces Angular to show the loader INSTANTLY
+      setTimeout(() => {
+        this.loading = isLoading;
+      });
     });
   }
 }

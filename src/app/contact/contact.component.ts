@@ -21,12 +21,10 @@ export class ContactComponent implements OnInit {
   constructor(private loadingService: LoadingService) {}
 
   ngOnInit() {
-    // Hide the loader immediately on the contact page
     this.loadingService.hide();
   }
 
   async submit() {
-    // ... your existing submit code ...
     this.sending = true;
     this.status = 'Sending...';
     this.statusColor = 'var(--primary)';

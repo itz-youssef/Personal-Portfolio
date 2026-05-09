@@ -1,9 +1,8 @@
-import { Component, OnInit , AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SheetsService } from '../sheets.service';
 import { LoadingService } from '../loading.services';
-import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-about',
@@ -12,7 +11,7 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent implements OnInit , AfterViewInit {
+export class AboutComponent implements OnInit, AfterViewInit {
   visionText = '';
   missionText = '';
   profileImg = '';
@@ -36,7 +35,7 @@ export class AboutComponent implements OnInit , AfterViewInit {
   links = [
     { href: 'https://www.linkedin.com/in/youssef-yasser-0b9097333/', icon: 'fab fa-linkedin', label: 'LinkedIn Profile' },
     { href: 'https://github.com/itz-youssef', icon: 'fab fa-github', label: 'GitHub Profile' },
-    { href: './media/Youssef_CV_Final.pdf', icon: 'fas fa-file-download', label: 'Download CV' },
+    { href: 'media/Youssef_CV_Final.pdf', icon: 'fas fa-file-download', label: 'Download CV' },
     { href: 'https://linktr.ee/youssefyasser1', icon: 'fas fa-link', label: 'Linktree' },
     { href: 'mailto:y.yousef312@outlook.com', icon: 'fas fa-envelope', label: 'Email Me' },
     { href: 'https://codeforces.com/profile/Youssef_Yasser_Elsayed', icon: 'fas fa-chart-simple', label: 'Codeforces' }
@@ -49,17 +48,18 @@ export class AboutComponent implements OnInit , AfterViewInit {
 
   ngOnInit() {
     this.loadingService.show();
-    
-    this.sheets.getSettings()
-      .pipe(finalize(() => this.loadingService.hide()))
-      .subscribe({
-        next: (data) => {
-          this.visionText = data['vision_text'] || '';
-          this.missionText = data['mission_text'] || '';
-          this.profileImg = data['profile_img'] || '';
-        },
-        error: (err) => console.error('API Error:', err)
-      });
+    this.sheets.getSettings().subscribe({
+      next: data => {
+        const s = data as Record<string, string>;
+        this.visionText = s['vision_text'] || '';
+        this.missionText = s['mission_text'] || '';
+        this.profileImg = s['profile_img'] || '';
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
   }
 
   ngAfterViewInit() {

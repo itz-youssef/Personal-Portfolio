@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 const SHEET_ID = '1qUjr34HZloU2QYjip8yAPwRS6FOAqRp0TPOnKnImKxs';
@@ -20,7 +20,7 @@ export class SheetsService {
 
   getSettings(): Observable<Record<string, string>> {
     return this.get('Sheet1!A1:B50').pipe(
-      map(rows => Object.fromEntries(rows))
+      map(rows => Object.fromEntries(rows) as Record<string, string>)
     );
   }
 

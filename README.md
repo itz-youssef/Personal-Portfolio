@@ -15,7 +15,7 @@ src/app/
   sheets.service.ts     — Google Sheets CMS integration
   github.service.ts     — GitHub API integration
   theme.service.ts      — Dark/light theme + particles.js
-src/styles.css          — All global CSS (identical to original)
+src/styles.css          — All global CSS
 ```
 
 ## How to Run Locally
@@ -25,22 +25,14 @@ ng serve
 ```
 Open http://localhost:4200
 
-## How to Deploy to GitHub Pages
+## How to Deploy
 ```bash
-npm install -g @angular/cli
-ng add @angular/fire   # OR use:
 ng build --configuration=production
-# Then push the dist/portfolio/browser/ folder to your gh-pages branch
-```
-
-### Quick GitHub Pages deploy:
-```bash
-npm install -g angular-cli-ghpages
-ng deploy --base-href=/YOUR-REPO-NAME/
+# Push dist/portfolio/browser/ to your hosting
 ```
 
 ## Notes
-- Uses **hash routing** (`/#/about`) for compatibility with GitHub Pages static hosting
-- The `media/` folder (images, CV, favicon) must be placed alongside the built files
+- Uses **hash routing** (`/#/about`) for GitHub Pages compatibility
+- Media files (images, CV, favicon) must be placed in `src/public/media/`
+- Angular.json is configured to copy `src/public/` to the build output root
 - Chatbase widget and particles.js are loaded from CDN in index.html
-- All content (hero name, profile pic, certificates, experience) is still driven by Google Sheets

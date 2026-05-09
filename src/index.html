@@ -14,15 +14,7 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   </head>
   <body>
-    <app-root>
-      <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #121212; display: flex; justify-content: center; align-items: center; z-index: 10000;">
-        <div style="text-align: center;">
-          <div style="width: 50px; height: 50px; border: 5px solid #444; border-top: 5px solid #d16af4; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem;"></div>
-          <p style="color: #24f4f6; font-weight: 600; letter-spacing: 1px; font-family: 'Segoe UI', sans-serif;">Loading</p>
-        </div>
-      </div>
-      <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
-    </app-root>
+    <app-root></app-root>
     <script>
       (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="B1iI38dcWet-pKDPhMT4e";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
     </script>
