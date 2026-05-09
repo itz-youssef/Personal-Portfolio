@@ -64,6 +64,7 @@ src/app/github.service.ts
 src/app/home/home.component.css
 src/app/home/home.component.html
 src/app/home/home.component.ts
+src/app/loading.services.ts
 src/app/navbar/navbar.component.css
 src/app/navbar/navbar.component.html
 src/app/navbar/navbar.component.ts
@@ -416,30 +417,6 @@ ng deploy --base-href=/YOUR-REPO-NAME/
 <router-outlet></router-outlet>
 </file>
 
-<file path="src/app/app.component.ts">
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
-import { PreloaderComponent } from './preloader/preloader.component';
-import { ThemeService } from './theme.service';
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, NavbarComponent, PreloaderComponent],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  loading = true;
-  constructor(private themeService: ThemeService) {}
-  ngOnInit() {
-    this.themeService.init();
-    setTimeout(() => this.loading = false, 800);
-  }
-}
-</file>
-
 <file path="src/app/app.config.ts">
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withHashLocation } from '@angular/router';
@@ -559,74 +536,6 @@ export const routes: Routes = [
 </footer>
 </file>
 
-<file path="src/app/certificates/certificates.component.ts">
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SheetsService } from '../sheets.service';
-
-@Component({
-  selector: 'app-certificates',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './certificates.component.html',
-  styleUrls: ['./certificates.component.css']
-})
-export class CertificatesComponent implements OnInit {
-  allCerts: any[] = [];
-  displayed: any[] = [];
-  activeFilter = 'all';
-  activeSort = '';
-  modalImage = '';
-  modalOpen = false;
-
-  filters = [
-    { key: 'all', label: 'All' },
-    { key: 'programming', label: 'Programming' },
-    { key: 'ai', label: 'AI/ML' },
-    { key: 'soft-skills', label: 'Soft Skills' }
-  ];
-
-  constructor(private sheets: SheetsService) {}
-
-  ngOnInit() {
-    this.sheets.getCertificates().subscribe(certs => {
-      this.allCerts = certs;
-      this.displayed = [...certs];
-    });
-  }
-
-  setFilter(key: string) {
-    this.activeFilter = key;
-    this.applyFilterSort();
-  }
-
-  setSort(key: string) {
-    this.activeSort = key;
-    this.applyFilterSort();
-  }
-
-  private applyFilterSort() {
-    let result = this.activeFilter === 'all' ? [...this.allCerts]
-      : this.allCerts.filter(c => c.category === this.activeFilter);
-    if (this.activeSort === 'date') result.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    if (this.activeSort === 'rating') result.sort((a, b) => b.rating - a.rating);
-    this.displayed = result;
-  }
-
-  getCategoryName(cat: string): string {
-    const m: Record<string, string> = { programming: 'Programming', web: 'Web Development', ai: 'AI/ML', 'soft-skills': 'Soft Skills' };
-    return m[cat] || cat;
-  }
-
-  formatDate(d: string): string {
-    return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-  }
-
-  openModal(img: string) { this.modalImage = img; this.modalOpen = true; document.body.style.overflow = 'hidden'; }
-  closeModal() { this.modalOpen = false; document.body.style.overflow = 'auto'; }
-}
-</file>
-
 <file path="src/app/contact/contact.component.css">
 
 </file>
@@ -710,55 +619,6 @@ export class CertificatesComponent implements OnInit {
     </div>
   </div>
 </footer>
-</file>
-
-<file path="src/app/contact/contact.component.ts">
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-const FORM_ENDPOINT = 'https://formspree.io/f/xeobvplw';
-
-@Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
-})
-export class ContactComponent {
-  formData = { name: '', email: '', subject: '', message: '' };
-  status = '';
-  statusColor = '';
-  sending = false;
-
-  async submit() {
-    this.sending = true;
-    this.status = 'Sending...';
-    this.statusColor = 'var(--primary)';
-    try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...this.formData, _replyto: this.formData.email })
-      });
-      if (res.ok) {
-        this.status = '✅ Message sent successfully! I\'ll be in touch soon.';
-        this.statusColor = 'green';
-        this.formData = { name: '', email: '', subject: '', message: '' };
-      } else {
-        this.status = '❌ Submission failed. Please try again.';
-        this.statusColor = 'red';
-      }
-    } catch {
-      this.status = '❌ An unexpected error occurred.';
-      this.statusColor = 'red';
-    } finally {
-      this.sending = false;
-      setTimeout(() => this.status = '', 5000);
-    }
-  }
-}
 </file>
 
 <file path="src/app/github.service.ts">
@@ -988,86 +848,23 @@ export class GithubService {
 </footer>
 </file>
 
-<file path="src/app/home/home.component.ts">
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { SheetsService } from '../sheets.service';
-import { GithubService } from '../github.service';
-import { forkJoin } from 'rxjs';
+<file path="src/app/loading.services.ts">
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
-@Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
-})
-export class HomeComponent implements OnInit, AfterViewInit {
-  heroName = '';
-  heroDesc = '';
-  profileImg = '';
-  featured: any = null;
-  experience: any[] = [];
-  mainProjects: any[] = [];
-  githubRepos: any[] = [];
-  loadingRepos = true;
+@Injectable({ providedIn: 'root' })
+export class LoadingService {
+  private loadingSubject = new BehaviorSubject<boolean>(true);
+  loading$ = this.loadingSubject.asObservable();
 
-  skills = {
-    languages: ['Python', 'Java', 'C++', 'JavaScript', 'SQL'],
-    ai: ['Machine Learning', 'Deep Learning', 'Modeling', 'Pytorch'],
-    tools: ['Git', 'GitHub', 'VS Code', 'MySQL']
-  };
-
-  proficiency = [
-    { name: 'Python', icon: 'fab fa-python', level: 85 },
-    { name: 'C++', icon: 'fab fa-cuttlefish', level: 75 },
-    { name: 'Machine Learning', icon: 'fas fa-brain', level: 80 },
-    { name: 'Deep Learning', icon: 'fas fa-network-wired', level: 70 },
-    { name: 'Java', icon: 'fas fa-database', level: 60 }
-  ];
-
-  constructor(private sheets: SheetsService, private github: GithubService) {}
-
-  ngOnInit() {
-    forkJoin({
-      settings: this.sheets.getSettings(),
-      featured: this.sheets.getFeatured(),
-      experience: this.sheets.getExperience(),
-      mainProjects: this.sheets.getMainProjects()
-    }).subscribe(({ settings, featured, experience, mainProjects }) => {
-      if (settings['profile_img']) this.profileImg = settings['profile_img'];
-      if (settings['hero_name']) this.heroName = settings['hero_name'];
-      if (settings['hero_desc']) this.heroDesc = settings['hero_desc'];
-      this.featured = featured;
-      this.experience = experience;
-      this.mainProjects = mainProjects;
-    });
-
-    this.github.getRepos().subscribe(repos => {
-      this.githubRepos = repos;
-      this.loadingRepos = false;
-    });
+  show() { 
+    this.loadingSubject.next(true); 
   }
-
-  ngAfterViewInit() {
-    setTimeout(() => this.observeCards(), 500);
-  }
-
-  getIcon(lang: string): string { return this.github.getIcon(lang); }
-
-  isKaggle(url: string): boolean { return url?.includes('kaggle'); }
-
-  formatDate(d: string): string {
-    return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-  }
-
-  private observeCards() {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-in'); });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.intro-card, .project-card, .interest-card, .table-row-animate').forEach(el => observer.observe(el));
+  
+  hide() { 
+    setTimeout(() => {
+      this.loadingSubject.next(false);
+    }, 400);
   }
 }
 </file>
@@ -1122,24 +919,6 @@ export class NavbarComponent {
   closeMenu() { this.menuOpen = false; }
   toggleTheme() { this.themeService.toggle(); }
 }
-</file>
-
-<file path="src/app/preloader/preloader.component.css">
-#preloader {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background-color: #121212; display: flex; justify-content: center;
-  align-items: center; z-index: 10000;
-  transition: opacity 0.6s ease-in-out, visibility 0.6s;
-}
-.loader-container { text-align: center; }
-.spinner {
-  width: 50px; height: 50px;
-  border: 5px solid var(--border); border-top: 5px solid var(--primary);
-  border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem;
-}
-#preloader p { color: var(--secondary); font-weight: 600; letter-spacing: 1px; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-.loader-hidden { opacity: 0; visibility: hidden; }
 </file>
 
 <file path="src/app/preloader/preloader.component.html">
@@ -1412,6 +1191,168 @@ bootstrapApplication(AppComponent, appConfig)
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
   ]
+}
+</file>
+
+<file path="src/app/certificates/certificates.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SheetsService } from '../sheets.service';
+import { LoadingService } from '../loading.services';
+
+@Component({
+  selector: 'app-certificates',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './certificates.component.html',
+  styleUrls: ['./certificates.component.css']
+})
+export class CertificatesComponent implements OnInit {
+  allCerts: any[] = [];
+  displayed: any[] = [];
+  activeFilter = 'all';
+  activeSort = '';
+  modalImage = '';
+  modalOpen = false;
+
+  filters = [
+    { key: 'all', label: 'All' },
+    { key: 'programming', label: 'Programming' },
+    { key: 'ai', label: 'AI/ML' },
+    { key: 'soft-skills', label: 'Soft Skills' }
+  ];
+
+  constructor(
+    private sheets: SheetsService,
+    private loadingService: LoadingService
+  ) {}
+
+  ngOnInit() {
+    this.loadingService.show();
+    this.sheets.getCertificates().subscribe(certs => {
+      this.allCerts = certs;
+      this.displayed = [...certs];
+      this.loadingService.hide();
+    });
+  }
+
+  setFilter(key: string) {
+    this.activeFilter = key;
+    this.applyFilterSort();
+  }
+
+  setSort(key: string) {
+    this.activeSort = key;
+    this.applyFilterSort();
+  }
+
+  private applyFilterSort() {
+    let result = this.activeFilter === 'all' ? [...this.allCerts]
+      : this.allCerts.filter(c => c.category === this.activeFilter);
+    if (this.activeSort === 'date') result.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    if (this.activeSort === 'rating') result.sort((a, b) => b.rating - a.rating);
+    this.displayed = result;
+  }
+
+  getCategoryName(cat: string): string {
+    const m: Record<string, string> = { programming: 'Programming', web: 'Web Development', ai: 'AI/ML', 'soft-skills': 'Soft Skills' };
+    return m[cat] || cat;
+  }
+
+  formatDate(d: string): string {
+    return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  openModal(img: string) { this.modalImage = img; this.modalOpen = true; document.body.style.overflow = 'hidden'; }
+  closeModal() { this.modalOpen = false; document.body.style.overflow = 'auto'; }
+}
+</file>
+
+<file path="src/app/contact/contact.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { LoadingService } from '../loading.services';
+
+const FORM_ENDPOINT = 'https://formspree.io/f/xeobvplw';
+
+@Component({
+  selector: 'app-contact',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.css']
+})
+export class ContactComponent implements OnInit {
+  formData = { name: '', email: '', subject: '', message: '' };
+  status = '';
+  statusColor = '';
+  sending = false;
+
+  constructor(private loadingService: LoadingService) {}
+
+  ngOnInit() {
+    // Hide the loader immediately on the contact page
+    this.loadingService.hide();
+  }
+
+  async submit() {
+    // ... your existing submit code ...
+    this.sending = true;
+    this.status = 'Sending...';
+    this.statusColor = 'var(--primary)';
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...this.formData, _replyto: this.formData.email })
+      });
+      if (res.ok) {
+        this.status = '✅ Message sent successfully! I\'ll be in touch soon.';
+        this.statusColor = 'green';
+        this.formData = { name: '', email: '', subject: '', message: '' };
+      } else {
+        this.status = '❌ Submission failed. Please try again.';
+        this.statusColor = 'red';
+      }
+    } catch {
+      this.status = '❌ An unexpected error occurred.';
+      this.statusColor = 'red';
+    } finally {
+      this.sending = false;
+      setTimeout(() => this.status = '', 5000);
+    }
+  }
+}
+</file>
+
+<file path="src/app/preloader/preloader.component.css">
+#preloader {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #121212; display: flex; justify-content: center;
+  align-items: center; z-index: 10000;
+  opacity: 1;
+  visibility: visible;
+  /* NO transition here - we want it to snap in instantly! */
+}
+
+.loader-container { text-align: center; }
+
+.spinner {
+  width: 50px; height: 50px;
+  border: 5px solid var(--border); border-top: 5px solid var(--primary);
+  border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem;
+}
+
+#preloader p { color: var(--secondary); font-weight: 600; letter-spacing: 1px; }
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.loader-hidden { 
+  opacity: 0; 
+  visibility: hidden; 
+  /* The transition is ONLY applied when the loader is fading away */
+  transition: opacity 0.6s ease-in-out, visibility 0.6s;
 }
 </file>
 
@@ -3461,12 +3402,151 @@ router-outlet + * {
 </footer>
 </file>
 
+<file path="src/app/app.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
+import { PreloaderComponent } from './preloader/preloader.component';
+import { ThemeService } from './theme.service';
+import { LoadingService } from '../app/loading.services';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, NavbarComponent, PreloaderComponent],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  loading = true; // Starts true for the initial website load
+
+  constructor(
+    private themeService: ThemeService,
+    private loadingService: LoadingService
+  ) {}
+
+  ngOnInit() {
+    this.themeService.init();
+    
+    this.loadingService.loading$.subscribe(isLoading => {
+      // Using setTimeout ensures Angular updates the UI safely in the background
+      setTimeout(() => {
+        this.loading = isLoading;
+      });
+    });
+  }
+}
+</file>
+
+<file path="src/app/home/home.component.ts">
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { SheetsService } from '../sheets.service';
+import { GithubService } from '../github.service';
+import { LoadingService } from '../loading.services';
+import { forkJoin } from 'rxjs';
+import { finalize } from 'rxjs/operators'; // <--- ADDED THIS
+
+@Component({
+  selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule, RouterLink],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit, AfterViewInit {
+  heroName = '';
+  heroDesc = '';
+  profileImg = '';
+  featured: any = null;
+  experience: any[] = [];
+  mainProjects: any[] = [];
+  githubRepos: any[] = [];
+  loadingRepos = true;
+
+  skills = {
+    languages: ['Python', 'Java', 'C++', 'JavaScript', 'SQL'],
+    ai: ['Machine Learning', 'Deep Learning', 'Modeling', 'Pytorch'],
+    tools: ['Git', 'GitHub', 'VS Code', 'MySQL']
+  };
+
+  proficiency = [
+    { name: 'Python', icon: 'fab fa-python', level: 85 },
+    { name: 'C++', icon: 'fab fa-cuttlefish', level: 75 },
+    { name: 'Machine Learning', icon: 'fas fa-brain', level: 80 },
+    { name: 'Deep Learning', icon: 'fas fa-network-wired', level: 70 },
+    { name: 'Java', icon: 'fas fa-database', level: 60 }
+  ];
+
+  constructor(
+    private sheets: SheetsService, 
+    private github: GithubService,
+    private loadingService: LoadingService
+  ) {}
+
+  ngOnInit() {
+    this.loadingService.show();
+
+    forkJoin({
+      settings: this.sheets.getSettings(),
+      featured: this.sheets.getFeatured(),
+      experience: this.sheets.getExperience(),
+      mainProjects: this.sheets.getMainProjects(),
+      repos: this.github.getRepos()
+    })
+    .pipe(
+      // finalize guarantees the loader hides even if an API fails!
+      finalize(() => {
+        this.loadingService.hide();
+      })
+    )
+    .subscribe({
+      next: ({ settings, featured, experience, mainProjects, repos }) => {
+        if (settings['profile_img']) this.profileImg = settings['profile_img'];
+        if (settings['hero_name']) this.heroName = settings['hero_name'];
+        if (settings['hero_desc']) this.heroDesc = settings['hero_desc'];
+        this.featured = featured;
+        this.experience = experience;
+        this.mainProjects = mainProjects;
+        
+        this.githubRepos = repos;
+        this.loadingRepos = false;
+      },
+      error: (err) => {
+        console.error('API Error on Home Page:', err);
+      }
+    });
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => this.observeCards(), 500);
+  }
+
+  getIcon(lang: string): string { return this.github.getIcon(lang); }
+
+  isKaggle(url: string): boolean { return url?.includes('kaggle'); }
+
+  formatDate(d: string): string {
+    return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  private observeCards() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-in'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.intro-card, .project-card, .interest-card, .table-row-animate').forEach(el => observer.observe(el));
+  }
+}
+</file>
+
 <file path="src/app/about/about.component.ts">
 import { Component, OnInit , AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SheetsService } from '../sheets.service';
-
+import { LoadingService } from '../loading.services';
 
 @Component({
   selector: 'app-about',
@@ -3505,13 +3585,18 @@ export class AboutComponent implements OnInit , AfterViewInit {
     { href: 'https://codeforces.com/profile/Youssef_Yasser_Elsayed', icon: 'fas fa-chart-simple', label: 'Codeforces' }
   ];
 
-  constructor(private sheets: SheetsService) {}
+  constructor(
+    private sheets: SheetsService,
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit() {
+    this.loadingService.show();
     this.sheets.getSettings().subscribe(data => {
       this.visionText = data['vision_text'] || '';
       this.missionText = data['mission_text'] || '';
       this.profileImg = data['profile_img'] || '';
+      this.loadingService.hide();
     });
   }
   ngAfterViewInit() {

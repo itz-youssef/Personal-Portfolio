@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SheetsService } from '../sheets.service';
 import { LoadingService } from '../loading.services';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-certificates',
@@ -32,11 +33,16 @@ export class CertificatesComponent implements OnInit {
 
   ngOnInit() {
     this.loadingService.show();
-    this.sheets.getCertificates().subscribe(certs => {
-      this.allCerts = certs;
-      this.displayed = [...certs];
-      this.loadingService.hide();
-    });
+    
+    this.sheets.getCertificates()
+      .pipe(finalize(() => this.loadingService.hide()))
+      .subscribe({
+        next: (certs) => {
+          this.allCerts = certs;
+          this.displayed = [...certs];
+        },
+        error: (err) => console.error('API Error:', err)
+      });
   }
 
   setFilter(key: string) {

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SheetsService } from '../sheets.service';
 import { LoadingService } from '../loading.services';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-about',
@@ -48,15 +49,21 @@ export class AboutComponent implements OnInit , AfterViewInit {
 
   ngOnInit() {
     this.loadingService.show();
-    this.sheets.getSettings().subscribe(data => {
-      this.visionText = data['vision_text'] || '';
-      this.missionText = data['mission_text'] || '';
-      this.profileImg = data['profile_img'] || '';
-      this.loadingService.hide();
-    });
+    
+    this.sheets.getSettings()
+      .pipe(finalize(() => this.loadingService.hide()))
+      .subscribe({
+        next: (data) => {
+          this.visionText = data['vision_text'] || '';
+          this.missionText = data['mission_text'] || '';
+          this.profileImg = data['profile_img'] || '';
+        },
+        error: (err) => console.error('API Error:', err)
+      });
   }
+
   ngAfterViewInit() {
-  setTimeout(() => this.observeCards(), 500);
+    setTimeout(() => this.observeCards(), 500);
   }
 
   private observeCards() {
