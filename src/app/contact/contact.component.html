@@ -1,0 +1,78 @@
+<section class="page-header">
+  <div class="container">
+    <h1>Contact Me</h1>
+    <p>Get in touch for collaborations or inquiries</p>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Let's Connect</h2>
+        <p>I'm always interested in new opportunities, collaborations, or just having a conversation about technology and software development.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div><h3>Email</h3><p>Available upon request</p></div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div><h3>Location</h3><p>Cairo, Egypt</p></div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-university"></i>
+            <div><h3>Education</h3><p>Cairo University</p></div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/youssef-yasser-0b9097333/" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/itz-youssef" target="_blank" class="social-btn"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2>Send a Message</h2>
+        <div id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" [(ngModel)]="formData.name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" [(ngModel)]="formData.email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" [(ngModel)]="formData.subject" name="subject" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" [(ngModel)]="formData.message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="submit()" [disabled]="sending">Send Message</button>
+          <p *ngIf="status" [style.color]="statusColor" style="margin-top:1rem;text-align:center;">{{ status }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Youssef Yasser</h3>
+        <p>Computer Science Student & Developer</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/youssef-yasser-0b9097333/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/itz-youssef" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Youssef Yasser. All rights reserved.</p>
+      <p>Page | 04</p>
+    </div>
+  </div>
+</footer>

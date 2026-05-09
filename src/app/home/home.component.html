@@ -1,0 +1,193 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1>I am <span>{{ heroName }}</span></h1>
+      <p>{{ heroDesc }}</p>
+      <div class="hero-buttons">
+        <a href="./media/Youssef_CV_Final.pdf" target="_blank" class="btn btn-accent">
+          <i class="fas fa-file-download"></i> Download CV
+        </a>
+        <a routerLink="/about" class="btn btn-primary">Explore Now</a>
+        <a href="#projects" class="btn btn-secondary">
+          <i class="fas fa-play"></i> View Projects
+        </a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img [src]="profileImg" alt="Youssef Yasser" class="profile-image" />
+    </div>
+  </div>
+</section>
+
+<!-- Introduction -->
+<section class="intro">
+  <div class="container">
+    <h2>Introduction</h2>
+    <p>I'm a Computer Science student with a strong base and passion for technology and software development. My journey in programming started with a curiosity about how things work, and it has evolved into a dedication to creating efficient, user-friendly applications.</p>
+    <p>I enjoy tackling complex problems and transforming ideas into functional software. My current focus is on expanding my knowledge in Machine learning, Deep learning, and exploring the AI development track.</p>
+    <div class="intro-grid">
+      <div class="intro-card">
+        <h3>About Me</h3>
+        <p>Dedicated Computer Science student with expertise in multiple programming languages and frameworks. Always eager to learn new technologies and take on challenging projects.</p>
+        <a routerLink="/about" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="intro-card">
+        <h3>My Portfolio</h3>
+        <p>Collection of projects showcasing my skills in web development, software engineering, and problem-solving. Each project represents a learning milestone in my development journey.</p>
+        <a href="#projects" class="read-more">View Projects <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Proficiency Table -->
+<section class="proficiency-section">
+  <div class="container">
+    <h2>Proficiency Level</h2>
+    <div class="table-responsive">
+      <table class="proficiency-table">
+        <thead>
+          <tr><th>Technology</th><th>Level</th><th>Progress</th></tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of proficiency" class="table-row-animate">
+            <td><i [class]="item.icon" style="color: var(--primary); margin-right: 8px;"></i> {{ item.name }}</td>
+            <td>{{ item.level }}%</td>
+            <td>
+              <div class="table-progress">
+                <div class="table-progress-fill" [style.--progress]="item.level + '%'"></div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Featured -->
+<section id="featured" class="featured-section" *ngIf="featured">
+  <div class="container">
+    <h2>Featured Highlight</h2>
+    <div class="featured-container">
+      <div class="featured-card fade-in">
+        <div class="featured-badge">{{ featured.badge }}</div>
+        <div class="featured-image" [style.background-image]="'url(' + featured.image + ')'"></div>
+        <div class="featured-content">
+          <h3>{{ featured.title }}</h3>
+          <p>{{ featured.description }}</p>
+          <a [href]="featured.link" target="_blank" class="btn btn-primary">
+            View Document <i class="fas fa-external-link-alt" style="margin-left:5px"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="experience" *ngIf="experience.length > 0">
+  <div class="container">
+    <h2>Experience</h2>
+    <div class="experience-timeline">
+      <div *ngFor="let exp of experience" class="experience-item fade-in">
+        <div class="exp-dot"></div>
+        <div class="exp-content">
+          <h3>{{ exp.role }}</h3>
+          <h4>{{ exp.company }} | <span>{{ exp.duration }}</span></h4>
+          <p>{{ exp.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GitHub Projects -->
+<section id="projects" class="projects">
+  <div class="container">
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <div *ngIf="loadingRepos" class="loading">Loading projects...</div>
+      <div *ngFor="let repo of githubRepos" class="project-card">
+        <div class="project-icon">
+          <i [class]="'fab fa-' + getIcon(repo.language)"></i>
+        </div>
+        <h3>{{ repo.name }}</h3>
+        <p>{{ repo.description || 'No description available' }}</p>
+        <div class="project-meta">
+          <span class="language">{{ repo.language || 'Various' }}</span>
+          <span class="stars"><i class="fas fa-star"></i> {{ repo.stargazers_count }}</span>
+        </div>
+        <a [href]="repo.html_url" target="_blank" class="project-link">View on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Projects -->
+<section id="mainprojects" class="mainprojects" *ngIf="mainProjects.length > 0">
+  <h2>Main Projects</h2>
+  <div style="display:flex;flex-direction:column;gap:3rem;width:100%;align-items:center;">
+    <div *ngFor="let p of mainProjects" class="mainprojectscards fade-in">
+      <div class="mainprojecttext">
+        <h1>{{ p.title }}</h1>
+        <p>{{ p.description }}</p>
+        <div class="mainproject-actions">
+          <a [href]="p.github" target="_blank" class="btn btn-primary github-btn">
+            <i [class]="'fab ' + (isKaggle(p.github) ? 'fa-kaggle' : 'fa-github')"></i>
+            View on {{ isKaggle(p.github) ? 'Kaggle' : 'GitHub' }}
+          </a>
+        </div>
+      </div>
+      <div class="mainprojectimage" [style.background-image]="'url(' + p.image + ')'"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="skills">
+  <div class="container">
+    <h2>Technical Skills</h2>
+    <div class="skills-container">
+      <div class="skill-category">
+        <h3>Programming Languages</h3>
+        <div class="skill-list">
+          <span *ngFor="let s of skills.languages" class="skill-tag">{{ s }}</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Artificial Intelligence</h3>
+        <div class="skill-list">
+          <span *ngFor="let s of skills.ai" class="skill-tag">{{ s }}</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Tools & Technologies</h3>
+        <div class="skill-list">
+          <span *ngFor="let s of skills.tools" class="skill-tag">{{ s }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Youssef Yasser</h3>
+        <p>Computer Science Student & Developer</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/youssef-yasser-0b9097333/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/itz-youssef" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Youssef Yasser. All rights reserved.</p>
+      <p>Page | 01</p>
+    </div>
+  </div>
+</footer>

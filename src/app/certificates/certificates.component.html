@@ -1,0 +1,81 @@
+<section class="certificate-hero">
+  <div class="container">
+    <h1>My Certificates</h1>
+    <p>A collection of certifications and achievements that showcase my skills and dedication to continuous learning.</p>
+  </div>
+</section>
+
+<section class="certificates-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Certifications & Achievements</h2>
+      <div class="filter-controls">
+        <div class="sort-controls">
+          <button *ngFor="let f of filters" class="filter-btn" [class.active]="activeFilter === f.key" (click)="setFilter(f.key)">{{ f.label }}</button>
+        </div>
+        <div class="sort-controls">
+          <button class="sort-btn" [class.active]="activeSort==='date'" (click)="setSort('date')"><i class="fas fa-calendar-alt"></i> Date</button>
+          <button class="sort-btn" [class.active]="activeSort==='rating'" (click)="setSort('rating')"><i class="fas fa-star"></i> Rating</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="certificates-grid">
+      <div *ngIf="displayed.length === 0" class="empty-state">
+        <i class="fas fa-certificate"></i>
+        <h3>No certificates found</h3>
+        <p>Try selecting a different filter category</p>
+      </div>
+      <div *ngFor="let cert of displayed" class="certificate-card fade-in" [attr.data-category]="cert.category">
+        <img [src]="cert.image" [alt]="cert.title" class="certificate-image" />
+        <div class="certificate-content">
+          <div class="certificate-header">
+            <div class="certificate-badge"><i [class]="'fas fa-' + cert.icon"></i></div>
+            <div class="certificate-title">
+              <span class="certificate-category">{{ getCategoryName(cert.category) }}</span>
+              <h3>{{ cert.title }}</h3>
+            </div>
+          </div>
+          <p>{{ cert.description }}</p>
+          <div class="certificate-meta">
+            <span><i class="fas fa-university"></i> {{ cert.issuer }}</span>
+            <span><i class="far fa-calendar"></i> {{ formatDate(cert.date) }}</span>
+          </div>
+          <div class="certificate-footer">
+            <a href="#" class="certificate-link" (click)="$event.preventDefault(); openModal(cert.image)">
+              View Certificate <i class="fas fa-external-link-alt"></i>
+            </a>
+            <span class="certificate-rating"><i class="fas fa-star"></i> {{ cert.rating }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" [style.display]="modalOpen ? 'flex' : 'none'" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="closeModal()"><i class="fas fa-times"></i></button>
+    <img class="modal-image" [src]="modalImage" alt="Certificate Preview" />
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Youssef Yasser</h3>
+        <p>Computer Science Student & Developer</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/youssef-yasser-0b9097333/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/itz-youssef" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Youssef Yasser. All rights reserved.</p>
+      <p>Page | 03</p>
+    </div>
+  </div>
+</footer>

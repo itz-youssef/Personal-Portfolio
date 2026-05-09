@@ -1,0 +1,75 @@
+<!-- About Header -->
+<section class="page-header">
+  <div class="container">
+    <h1>About Me</h1>
+    <p>Just a curious developer learning, building, and growing</p>
+  </div>
+</section>
+
+<!-- About Content -->
+<section class="about-content">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>My Vision</h2>
+        <p></p>
+        <h2>My Mission</h2>
+        <p></p>
+
+        <div *ngFor="let edu of education" class="education">
+          <div class="education-item">
+            <div class="left-edu">
+              <h4>{{ edu.title }}</h4>
+              <p>{{ edu.desc }}</p>
+              <p class="date">{{ edu.date }}</p>
+            </div>
+            <div class="edu-image" [id]="edu.id"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-image">
+        <img src="/1764031045055.jpg" alt="Youssef Yasser - CU-AI NEXUS 2025" class="profile-image about-profile" />
+        <div class="about-links">
+          <a *ngFor="let link of links" [href]="link.href" target="_blank" class="social-link">
+            <i [class]="link.icon"></i> {{ link.label }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interests -->
+<section class="interests">
+  <div class="container">
+    <h2>Interests & Focus Areas</h2>
+    <div class="interests-grid">
+      <div *ngFor="let item of interests" class="interest-card">
+        <i [class]="item.icon"></i>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Youssef Yasser</h3>
+        <p>Computer Science Student & Developer</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/youssef-yasser-0b9097333/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/itz-youssef" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Youssef Yasser. All rights reserved.</p>
+      <p>Page | 02</p>
+    </div>
+  </div>
+</footer>

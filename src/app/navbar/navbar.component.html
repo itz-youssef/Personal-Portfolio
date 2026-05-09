@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a routerLink="/">Youssef Yasser</a>
+    </div>
+    <div class="nav-menu" [class.active]="menuOpen">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-link" (click)="closeMenu()">Home</a>
+      <a routerLink="/about" routerLinkActive="active" class="nav-link" (click)="closeMenu()">About Me</a>
+      <a routerLink="/certificates" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Certificates</a>
+      <a routerLink="/contact" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Contact</a>
+      <button class="theme-toggle" (click)="toggleTheme()">
+        <i [class]="themeService.isDark() ? 'fas fa-sun' : 'fas fa-moon'"></i>
+      </button>
+    </div>
+    <div class="hamburger" [class.active]="menuOpen" (click)="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </div>
+</nav>
