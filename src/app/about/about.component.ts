@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { SheetsService } from '../sheets.service';
 
 @Component({
   selector: 'app-about',
@@ -9,7 +10,11 @@ import { RouterLink } from '@angular/router';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit {
+  visionText = '';
+  missionText = '';
+  profileImg = '';
+
   education = [
     { id: 'cairo-uni', title: 'Cairo University', desc: 'Bachelor of Computer Science', date: '2023 - 2027' },
     { id: 'Coursera', title: 'Coursera Courses', desc: 'AI Development - Deep learning - Artificial neural networks', date: 'Issued 2025' },
@@ -34,4 +39,14 @@ export class AboutComponent {
     { href: 'mailto:y.yousef312@outlook.com', icon: 'fas fa-envelope', label: 'Email Me' },
     { href: 'https://codeforces.com/profile/Youssef_Yasser_Elsayed', icon: 'fas fa-chart-simple', label: 'Codeforces' }
   ];
+
+  constructor(private sheets: SheetsService) {}
+
+  ngOnInit() {
+    this.sheets.getSettings().subscribe(data => {
+      this.visionText = data['vision_text'] || '';
+      this.missionText = data['mission_text'] || '';
+      this.profileImg = data['profile_img'] || '';
+    });
+  }
 }

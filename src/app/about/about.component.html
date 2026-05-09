@@ -12,8 +12,10 @@
     <div class="about-grid">
       <div class="about-text">
         <h2>My Vision</h2>
+        <p>{{ visionText }}</p>
         <p></p>
         <h2>My Mission</h2>
+        <p>{{ missionText }}</p>
         <p></p>
 
         <div *ngFor="let edu of education" class="education">
@@ -29,7 +31,7 @@
       </div>
 
       <div class="about-image">
-        <img src="/media/1764031045055.jpg" alt="Youssef Yasser - CU-AI NEXUS 2025" class="profile-image about-profile" />
+        <img [src]="profileImg" alt="Youssef Yasser" class="profile-image about-profile" />
         <div class="about-links">
           <a *ngFor="let link of links" [href]="link.href" target="_blank" class="social-link">
             <i [class]="link.icon"></i> {{ link.label }}
