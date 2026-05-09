@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SheetsService } from '../sheets.service';
+import { LoadingService } from '../loading.services';
 
 @Component({
   selector: 'app-certificates',
@@ -24,12 +25,17 @@ export class CertificatesComponent implements OnInit {
     { key: 'soft-skills', label: 'Soft Skills' }
   ];
 
-  constructor(private sheets: SheetsService) {}
+  constructor(
+    private sheets: SheetsService,
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit() {
+    this.loadingService.show();
     this.sheets.getCertificates().subscribe(certs => {
       this.allCerts = certs;
       this.displayed = [...certs];
+      this.loadingService.hide();
     });
   }
 

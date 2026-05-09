@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SheetsService } from '../sheets.service';
 import { GithubService } from '../github.service';
+import { LoadingService } from '../loading.services';
 import { forkJoin } from 'rxjs';
 
 @Component({
@@ -36,26 +37,33 @@ export class HomeComponent implements OnInit, AfterViewInit {
     { name: 'Java', icon: 'fas fa-database', level: 60 }
   ];
 
-  constructor(private sheets: SheetsService, private github: GithubService) {}
+  constructor(
+    private sheets: SheetsService, 
+    private github: GithubService,
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit() {
+    this.loadingService.show();
+
     forkJoin({
       settings: this.sheets.getSettings(),
       featured: this.sheets.getFeatured(),
       experience: this.sheets.getExperience(),
-      mainProjects: this.sheets.getMainProjects()
-    }).subscribe(({ settings, featured, experience, mainProjects }) => {
+      mainProjects: this.sheets.getMainProjects(),
+      repos: this.github.getRepos()
+    }).subscribe(({ settings, featured, experience, mainProjects, repos }) => {
       if (settings['profile_img']) this.profileImg = settings['profile_img'];
       if (settings['hero_name']) this.heroName = settings['hero_name'];
       if (settings['hero_desc']) this.heroDesc = settings['hero_desc'];
       this.featured = featured;
       this.experience = experience;
       this.mainProjects = mainProjects;
-    });
-
-    this.github.getRepos().subscribe(repos => {
+      
       this.githubRepos = repos;
       this.loadingRepos = false;
+
+      this.loadingService.hide();
     });
   }
 

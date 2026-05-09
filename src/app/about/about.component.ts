@@ -2,7 +2,7 @@ import { Component, OnInit , AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SheetsService } from '../sheets.service';
-
+import { LoadingService } from '../loading.services';
 
 @Component({
   selector: 'app-about',
@@ -41,13 +41,18 @@ export class AboutComponent implements OnInit , AfterViewInit {
     { href: 'https://codeforces.com/profile/Youssef_Yasser_Elsayed', icon: 'fas fa-chart-simple', label: 'Codeforces' }
   ];
 
-  constructor(private sheets: SheetsService) {}
+  constructor(
+    private sheets: SheetsService,
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit() {
+    this.loadingService.show();
     this.sheets.getSettings().subscribe(data => {
       this.visionText = data['vision_text'] || '';
       this.missionText = data['mission_text'] || '';
       this.profileImg = data['profile_img'] || '';
+      this.loadingService.hide();
     });
   }
   ngAfterViewInit() {
