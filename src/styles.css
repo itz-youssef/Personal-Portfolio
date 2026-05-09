@@ -684,25 +684,25 @@ h2 {
 }
 
 #cairo-uni{
-  background-image: url("/media/cairo-uni.jpg");
+  background-image: url("./public/media/cairo-uni.jpg");
 }
 
 #ai{
 
-  background-image: url("/media/udemy22.webp");
+  background-image: url("./public/media/udemy22.webp");
 }
 
 #Coursera{
-  background-image: url("/media/coursera2.png");
+  background-image: url("./public/media/coursera2.png");
 }
 #nvidia{
-  background-image: url("/media/Nvidia.jpg");
+  background-image: url("./public/media/Nvidia.jpg");
 }
 #datacamp{
-  background-image: url("/media/dc3.jpg");
+  background-image: url("./public/media/dc3.jpg");
 }
 #ITI{
-  background-image: url("/media/maharatechiti_logo.jpg");
+  background-image: url("./public/media/maharatechiti_logo.jpg");
 }
 
 .date {
