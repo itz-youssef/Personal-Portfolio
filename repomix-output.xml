@@ -190,13 +190,6 @@ trim_trailing_whitespace = false
 
 </file>
 
-<file path="src/app/app.component.html">
-<app-preloader [hidden]="!loading"></app-preloader>
-<div id="particles-js"></div>
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
-</file>
-
 <file path="src/app/app.config.ts">
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withHashLocation } from '@angular/router';
@@ -1189,62 +1182,6 @@ export class SheetsService {
     </div>
   </div>
 </footer>
-</file>
-
-<file path="src/app/contact/contact.component.ts">
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { LoadingService } from '../loading.services';
-
-const FORM_ENDPOINT = 'https://formspree.io/f/xeobvplw';
-
-@Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
-})
-export class ContactComponent implements OnInit {
-  formData = { name: '', email: '', subject: '', message: '' };
-  status = '';
-  statusColor = '';
-  sending = false;
-
-  constructor(private loadingService: LoadingService) {}
-
-  ngOnInit() {
-    this.loadingService.hide();
-  }
-
-  async submit() {
-    this.sending = true;
-    this.status = 'Sending...';
-    this.statusColor = 'var(--primary)';
-    try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...this.formData, _replyto: this.formData.email })
-      });
-      if (res.ok) {
-        this.status = '✅ Message sent successfully! I\'ll be in touch soon.';
-        this.statusColor = 'green';
-        this.formData = { name: '', email: '', subject: '', message: '' };
-      } else {
-        this.status = '❌ Submission failed. Please try again.';
-        this.statusColor = 'red';
-      }
-    } catch {
-      this.status = '❌ An unexpected error occurred.';
-      this.statusColor = 'red';
-    } finally {
-      this.sending = false;
-      setTimeout(() => this.status = '', 5000);
-    }
-  }
-}
 </file>
 
 <file path="src/app/preloader/preloader.component.css">
@@ -2497,6 +2434,60 @@ export class CertificatesComponent implements OnInit {
 }
 </file>
 
+<file path="src/app/contact/contact.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { LoadingService } from '../loading.services';
+
+const FORM_ENDPOINT = 'https://formspree.io/f/xeobvplw';
+
+@Component({
+  selector: 'app-contact',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.css']
+})
+export class ContactComponent  {
+  formData = { name: '', email: '', subject: '', message: '' };
+  status = '';
+  statusColor = '';
+  sending = false;
+
+  constructor(private loadingService: LoadingService) {}
+
+  
+
+  async submit() {
+    this.sending = true;
+    this.status = 'Sending...';
+    this.statusColor = 'var(--primary)';
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...this.formData, _replyto: this.formData.email })
+      });
+      if (res.ok) {
+        this.status = '✅ Message sent successfully! I\'ll be in touch soon.';
+        this.statusColor = 'green';
+        this.formData = { name: '', email: '', subject: '', message: '' };
+      } else {
+        this.status = '❌ Submission failed. Please try again.';
+        this.statusColor = 'red';
+      }
+    } catch {
+      this.status = '❌ An unexpected error occurred.';
+      this.statusColor = 'red';
+    } finally {
+      this.sending = false;
+      setTimeout(() => this.status = '', 5000);
+    }
+  }
+}
+</file>
+
 <file path="src/app/home/home.component.ts">
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -2606,39 +2597,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 }
 </file>
 
-<file path="src/app/app.component.ts">
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
-import { PreloaderComponent } from './preloader/preloader.component';
-import { ThemeService } from './theme.service';
-import { LoadingService } from './loading.services';
+<file path="src/app/app.component.html">
+<!-- <app-preloader [hidden]="!loading"></app-preloader> -->
 
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, NavbarComponent, PreloaderComponent],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  loading = true;
+<div id="particles-js"></div>
 
-  constructor(
-    private themeService: ThemeService,
-    private loadingService: LoadingService
-  ) {}
+<app-navbar></app-navbar>
 
-  ngOnInit() {
-    this.themeService.init();
-
-    this.loadingService.loading$.subscribe(isLoading => {
-      setTimeout(() => {
-        this.loading = isLoading;
-      });
-    });
-  }
-}
+<router-outlet></router-outlet>
 </file>
 
 <file path="src/app/about/about.component.ts">
@@ -2715,6 +2681,44 @@ export class AboutComponent implements OnInit, AfterViewInit {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-in'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.interest-card').forEach(el => observer.observe(el));
+  }
+}
+</file>
+
+<file path="src/app/app.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { LoadingService } from './loading.services';
+import { PreloaderComponent } from './preloader/preloader.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, PreloaderComponent, NavbarComponent],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+
+  loading = true;
+
+  constructor(private loadingService: LoadingService) {}
+
+  ngOnInit() {
+    // اربط الحالة
+    this.loadingService.loading$.subscribe(state => {
+      this.loading = state;
+    });
+
+    // ابدأ التحميل
+    this.loadingService.show();
+
+    // اقفل الـ loading بعد ما الصفحة تجهز
+    setTimeout(() => {
+      this.loadingService.hide();
+    }, 1000);
   }
 }
 </file>

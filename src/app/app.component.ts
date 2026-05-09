@@ -1,6 +1,7 @@
+// src/app/app.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router'
 import { LoadingService } from './loading.services';
 import { PreloaderComponent } from './preloader/preloader.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -13,23 +14,14 @@ import { NavbarComponent } from './navbar/navbar.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  loading = true;
+  loading = false;  // start as false
 
   constructor(private loadingService: LoadingService) {}
 
   ngOnInit() {
-    // اربط الحالة
     this.loadingService.loading$.subscribe(state => {
       this.loading = state;
     });
-
-    // ابدأ التحميل
-    this.loadingService.show();
-
-    // اقفل الـ loading بعد ما الصفحة تجهز
-    setTimeout(() => {
-      this.loadingService.hide();
-    }, 1000);
+    // ❌ REMOVE the show() and setTimeout hide() — pages handle their own loading
   }
 }
